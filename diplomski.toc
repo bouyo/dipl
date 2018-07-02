@@ -1,0 +1,15 @@
+\select@language {croatian}
+\contentsline {chapter}{Popis slika}{v}
+\contentsline {chapter}{\numberline {1}Uvod}{1}
+\contentsline {chapter}{\numberline {2}Postav}{2}
+\contentsline {section}{\numberline {2.1}Izbor kamera, IC izvora i markera}{2}
+\contentsline {subsection}{\numberline {2.1.1}Kamera}{3}
+\contentsline {subsection}{\numberline {2.1.2}Infracrveni LED izvor}{4}
+\contentsline {subsection}{\numberline {2.1.3}Marker}{4}
+\contentsline {section}{\numberline {2.2}Pozicija kamera i markera}{5}
+\contentsline {subsection}{\numberline {2.2.1}Nosa\IeC {\v c} za Wiimote}{5}
+\contentsline {subsection}{\numberline {2.2.2}Radni prostor}{6}
+\contentsline {chapter}{\numberline {3}Izra\IeC {\v c}un pozicije i orijentacije}{7}
+\contentsline {chapter}{\numberline {4}Komunikacija}{8}
+\contentsline {chapter}{\numberline {5}Upravljanje}{9}
+\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{10}
