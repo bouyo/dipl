@@ -12,6 +12,8 @@
 \BOOKMARK [1][-]{section.3.1}{ROS - Robot Operating System}{chapter.3}% 12
 \BOOKMARK [1][-]{section.3.2}{ROS - Implementacija}{chapter.3}% 13
 \BOOKMARK [0][-]{chapter.4}{Izracun pozicije i orijentacije}{}% 14
-\BOOKMARK [0][-]{chapter.5}{Upravljanje}{}% 15
-\BOOKMARK [0][-]{chapter.6}{Zakljucak}{}% 16
-\BOOKMARK [0][-]{chapter*.3}{Literatura}{}% 17
+\BOOKMARK [1][-]{section.4.1}{Geometrijski postupak}{chapter.4}% 15
+\BOOKMARK [1][-]{section.4.2}{Postupak pomocu neuronske mre\236e}{chapter.4}% 16
+\BOOKMARK [0][-]{chapter.5}{Rezultati}{}% 17
+\BOOKMARK [0][-]{chapter.6}{Zakljucak}{}% 18
+\BOOKMARK [0][-]{chapter*.3}{Literatura}{}% 19

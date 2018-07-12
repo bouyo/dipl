@@ -123,13 +123,17 @@ Ovime se postiže da umjesto jedne teme naziva /wiimote/state dobijemo dvije tem
 
 \vspace{5mm}  
 
-Nakon što uspješno primi detektirane piksele od obje kamere, čvor za obradu izvršava izračun pozicije i orijentacije, koji će biti opisan kasnije u radu, te objavljuje dobivenu poziciju i orijentaciju na temu /drone\textunderscore position u obliku tipa podatka geometry\textunderscore msgs/Quaternion.msg
+Nakon što uspješno primi detektirane piksele od obje kamere, čvor za obradu izvršava izračun pozicije i orijentacije, koji će biti opisan kasnije u radu, te objavljuje dobivenu poziciju i orijentaciju na temu /drone\textunderscore position u obliku tipa podatka geometry\textunderscore msgs/Quaternion.msg. Quaternion tip poruke se koristi za objavu jer sadrži 4 varijable float64 tipa, a objavljena poruka nema veze sa stvarnim kvaternionima. Varijable "x", "y" i "z" predstavljaju poziciju u globalnom koordinatnom sustavu dok varijabla "w" predstavlja orijentaciju drona, to jest zakret njegovog lokalnog koordinatnog sustava u odnosu na globalni oko z-osi (yaw). Čvor koji ima funkciju upravljačkog algoritma drona će čitati iz teme /drone\textunderscore position što će omogućiti da se zatvori upravljačka petlja po poziciji i orijentaciji.
 
 \chapter{Izračun pozicije i orijentacije}
+Nakon što su kamere postavljene i usmjerene, markeri postavljeni na dronu i komunikacija uspostavljena, slijedi problem izračuna globalne pozicije točke iz poznatih piksela na kamerama. Svaki Wiimote objavljuje piksel na kojem je detektirao infracrveni marker. Taj piksel je zapisan u obliku (x,y) gdje x predstavlja stupac u kojem je piksel s prvim stupcem na lijevom kraju slike, a zadnjim stupcem (1024. stupac) na desnom kraju slike, dok y predstavlja redak s prvim retkom na dnu slike, a zadnjim na vrhu (768. red). Potrebno je iz para piksela (x$_1$, y$_1$) za prvi Wiimote i (x$_2$, y$_2$) za drugi Wiimote izračunati poziciju te točke u globalnim koordinatama (x$_G$, y$_G$, z$_G$). Prvi postupak kojim se to pokušalo postići je pomoću geometrije i poznatih parametara kamere.
+
+\section{Geometrijski postupak}
+
+\section{Postupak pomoću neuronske mreže}
 
 
-
-\chapter{Upravljanje}
+\chapter{Rezultati}
 
 \chapter{Zaključak}
 Zaključak.
