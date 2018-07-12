@@ -47,7 +47,7 @@ Zbog relativno velike udaljenosti na kojoj detekcija markera mora raditi i malih
 Infracrvena svjetlost je pogodna za detekciju na većim udaljenostima i uvjetima promjenjivog osvjetljenja. Većina materijala iz okoline reflektira vrlo malo infracrvene svjetlosti što osigurava pouzdanu detekciju infracrvenih izvora i materijala koji dobro reflektiraju infracrvenu svjetlost. Za detekciju pomoću infracrvene svjetlosti potrebni su okrugli markeri koji dobro reflektiraju infracrvenu svjetlost u svim smjerovima, kamere koje će detektirati svjetlost reflektiranu od markera i izvor infracrvene svjetlosti dovoljno velikog intenziteta i kuta zračenja da pokrije cijelo vidno polje kamere i željenu maksimalnu udaljenost markera.
 
 \subsection{Kamera}
-Testirane kamere su bile Pixy kamera sa IR-LOCK infracrvenom lećom i kamera unutar Wiimotea koja ima već infracrvenu leću. Obje kamere vraćaju piksele slike na kojima je detektirano infracrveno zraćenje. Valna duljina infracrvenog zraćenja koje kamere najbolje detektiraju iznosi oko 940nm. Wiimote šalje piksele od 4 najintenzivije infracrvene točke dok ih Pixy kamera može detektirati mnogo više, što u ovom slučaju ne igra ulogu zbog samo 3 potrebne točke.
+Testirane kamere su bile Pixy kamera sa IR-LOCK infracrvenom lećom i kamera unutar Wiimotea koja ima infracrvenu leću već ugrađenu. Obje kamere vraćaju piksele slike na kojima je detektirano infracrveno zraćenje. Valna duljina infracrvenog zraćenja koje kamere najbolje detektiraju iznosi oko 940nm. Wiimote šalje piksele od 4 najintenzivije infracrvene točke dok ih Pixy kamera može detektirati mnogo više, što u ovom slučaju ne igra ulogu zbog samo 3 potrebne točke.
 
 Veza između Wiimotea i računala postiže se Bluetooth povezivanjem. Takva veza omogućuje veću udaljenost kamera i veću fleksibilnost kod postavljanja kamera. Direktna veza između računala i Pixy kamere može se postići mini USB kablom, a ako je nužna bežična veza potrebno je spojiti Pixy kameru na mikrokontroler koji će onda komunicirati bežično s računalom.
 
@@ -75,7 +75,7 @@ Za preciznu i robusnu detekciju važno je pozicionirati kamere i markere tako da
 
 Koriste se tri markera pozicionirana na vrhu letjelice. Markeri su postavljeni u formaciju trokuta sa jednim markerom ispred prednjeg kraja letjelice dok su druga dva markera iza stražnjeg kraja letjelice. Razmak između stražnjih markera je manji od razmaka između stražnjih i prednjeg kako bi se detektirala orijentacija letjelice.
 
-Obje kamere moraju detektirati sva tri markera da bi se mogla odrediti pozicija i orijentacija letjelice u globalnom koordinatnom sustavu. Kamere su postavljene na pano visine 1.88m i širine 1.25m. Pozicionirane su na rubovima panoa kako bi bile što udaljenije i pokrivale što veći radni prostor. Nagib kamera u odnosu na okomicu iznosi 42$^{\circ}$. Iz poznavanja maksimalne udaljenosti detekcije koja iznosi 3m te horizontalnog i vertikalnog vidnog kuta Wiimote kamera izračunava se područje unutar kojeg će obje kamere detektirati sva tri LED markera.
+Obje kamere moraju detektirati sva tri markera da bi se mogla odrediti pozicija i orijentacija letjelice u globalnom koordinatnom sustavu. Kamere su postavljene na pano visine 1.88m i širine 1.25m. Pozicionirane su na rubovima panoa kako bi bile što udaljenije i pokrivale što veći radni prostor. Nagib kamera prema dolje iznosi 48$^{\circ}$ (rotacija oko x-osi kamere). Kamere su zarotirane oko njihove y-osi (lijevo-desno) za 20$^{\circ}$ jedna prema drugoj kako bi se dobio što veći radni prostor. Iz poznavanja maksimalne udaljenosti detekcije koja iznosi 3m te horizontalnog i vertikalnog vidnog kuta Wiimote kamera određuje se područje unutar kojeg će obje kamere detektirati sva tri LED markera. Rubovi zone detekcije obilježeni su ljepljivom vrpcom kako bi se dron uvijek mogao precizno postaviti za eksperimente. 
 
 \subsection{Nosač za Wiimote}
 Potrebno je napraviti nosač za Wiimote kamere kako bi se dobila precizna orijentacija kamera i čvrsta veza sa objektom na kojem će kamera biti postavljena (pano). Nosač za kameru mora imati mogućnost zakreta kamere oko dvije osi, osi x i y (gore-dolje, lijevo-desno). Iz izmjerenih dimenzija Wiimotea i segmenta panoa na koji će se nosač pričvrstiti, napravljen je model modularnog nosač u Solidworksu i isprintan pomoću 3D printera. Nosač se sastoji od 3 dijela:
@@ -91,12 +91,17 @@ Veza između držača Wiimotea i segmenta za vezu ostvarena je preko ploha koje 
 Veza između dijela učvršćenog na pano i segmenta za povezivanje ostvarena je preko cilindra na koji se postavlja segment za povezivanje. Segment za povezivanje se može slobodno rotirati oko vertikalne osi (lijevo-desno). Kad se postavi željeni zakret Wiimotea, veza se učvršćuje pomoću M3 matice i vijka. 
 
 \subsection{Radni prostor}
-Iz pozicija i orijentacija kamera, poznatog vidnog kuta i maksimalne udaljenosti na kojoj Wiimoteovi detektiraju infracrveni LED marker računa se prostor unutar kojeg je kamera u mogućnosti detektirati marker. Taj postupak se radi za obje kamere. Presjek prostora detekcije prve i druge kamere je radni prostor. Ako dron ostane unutar tog prostora njegova pozicija i orijentacija će biti dobivene iz sustava globalne vizije pa je važno postaviti ograničenja radnog prostora u algoritme upravljanja dronom kako on ne bi izašao tog prostora.  
+Iz pozicija i orijentacija kamera, poznatog vidnog kuta i maksimalne udaljenosti na kojoj Wiimoteovi detektiraju infracrveni LED marker računa se prostor unutar kojeg je kamera u mogućnosti detektirati marker. Taj postupak se radi za obje kamere. Presjek prostora detekcije prve i druge kamere je radni prostor. Ako dron ostane unutar tog prostora njegova pozicija i orijentacija će biti dobivene iz sustava globalne vizije pa je važno postaviti ograničenja radnog prostora u algoritme upravljanja dronom kako on ne bi izašao tog prostora.
+
+Zbog ručnog postavljanja zakreta kamera koje unosi greške od nekoliko stupnjeva i loše detekcije markera na rubnim dijelovima vidnog polja kamera, određivanje rubova radnog prostora izvršeno je eksperimentalno.  
+
+\chapter{Komunikacija}
+Oba Wiimotea se povezuju bežično preko Bluetooth veze sa osobnim računalom. Računalo mora na neki način dohvatiti bitne informacije iz kamera, iz njih izračunati poziciju i orijentaciju drona u prostoru te na kraju objaviti izračunate vrijednosti kako bi se one mogle dohvatiti od strane upravljačkog algoritma. Za preciznu detekciju i pouzdano upravljanje važno je da su mjerenja kamera sinkronizirana te da je poznata frekvencija izračuna i objave pozicije drona. Frekvencija kojom Wiimote šalje podatke iznosi 100Hz. Za upravljanje po poziciji takva brzina je nepotrebna pa će se uzimati podaci frekvencijom od 20Hz.
+\section{ROS - Robot Operating System}
 
 \chapter{Izračun pozicije i orijentacije}
 
 
-\chapter{Komunikacija}
 
 \chapter{Upravljanje}
 
