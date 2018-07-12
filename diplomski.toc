@@ -12,7 +12,7 @@
 \contentsline {chapter}{\numberline {3}Komunikacija}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}ROS - Robot Operating System}{7}{section.3.1}
 \contentsline {section}{\numberline {3.2}ROS - Implementacija}{8}{section.3.2}
-\contentsline {chapter}{\numberline {4}Izra\IeC {\v c}un pozicije i orijentacije}{9}{chapter.4}
-\contentsline {chapter}{\numberline {5}Upravljanje}{10}{chapter.5}
-\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{11}{chapter.6}
-\contentsline {chapter}{Literatura}{12}{chapter*.3}
+\contentsline {chapter}{\numberline {4}Izra\IeC {\v c}un pozicije i orijentacije}{10}{chapter.4}
+\contentsline {chapter}{\numberline {5}Upravljanje}{11}{chapter.5}
+\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{12}{chapter.6}
+\contentsline {chapter}{Literatura}{13}{chapter*.3}
