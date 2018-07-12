@@ -1,0 +1,17 @@
+\BOOKMARK [0][-]{chapter*.2}{Popis slika}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Uvod}{}% 2
+\BOOKMARK [0][-]{chapter.2}{Postav}{}% 3
+\BOOKMARK [1][-]{section.2.1}{Izbor kamera, IC izvora i markera}{chapter.2}% 4
+\BOOKMARK [2][-]{subsection.2.1.1}{Kamera}{section.2.1}% 5
+\BOOKMARK [2][-]{subsection.2.1.2}{Infracrveni LED izvor}{section.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.1.3}{Marker}{section.2.1}% 7
+\BOOKMARK [1][-]{section.2.2}{Pozicija kamera i markera}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.1}{Nosac za Wiimote}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.2}{Radni prostor}{section.2.2}% 10
+\BOOKMARK [0][-]{chapter.3}{Komunikacija}{}% 11
+\BOOKMARK [1][-]{section.3.1}{ROS - Robot Operating System}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{ROS - Implementacija}{chapter.3}% 13
+\BOOKMARK [0][-]{chapter.4}{Izracun pozicije i orijentacije}{}% 14
+\BOOKMARK [0][-]{chapter.5}{Upravljanje}{}% 15
+\BOOKMARK [0][-]{chapter.6}{Zakljucak}{}% 16
+\BOOKMARK [0][-]{chapter*.3}{Literatura}{}% 17

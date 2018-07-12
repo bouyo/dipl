@@ -1,6 +1,13 @@
 \documentclass[times, utf8, diplomski]{fer}
 \usepackage{booktabs}
 \usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 \begin{document}
 
@@ -96,8 +103,19 @@ Iz pozicija i orijentacija kamera, poznatog vidnog kuta i maksimalne udaljenosti
 Zbog ručnog postavljanja zakreta kamera koje unosi greške od nekoliko stupnjeva i loše detekcije markera na rubnim dijelovima vidnog polja kamera, određivanje rubova radnog prostora izvršeno je eksperimentalno.  
 
 \chapter{Komunikacija}
-Oba Wiimotea se povezuju bežično preko Bluetooth veze sa osobnim računalom. Računalo mora na neki način dohvatiti bitne informacije iz kamera, iz njih izračunati poziciju i orijentaciju drona u prostoru te na kraju objaviti izračunate vrijednosti kako bi se one mogle dohvatiti od strane upravljačkog algoritma. Za preciznu detekciju i pouzdano upravljanje važno je da su mjerenja kamera sinkronizirana te da je poznata frekvencija izračuna i objave pozicije drona. Frekvencija kojom Wiimote šalje podatke iznosi 100Hz. Za upravljanje po poziciji takva brzina je nepotrebna pa će se uzimati podaci frekvencijom od 20Hz.
+Oba Wiimotea se povezuju bežično preko Bluetooth veze sa osobnim računalom. Računalo mora na neki način dohvatiti bitne informacije iz kamera, iz njih izračunati poziciju i orijentaciju drona u prostoru te na kraju objaviti izračunate vrijednosti kako bi se one mogle dohvatiti od strane upravljačkog algoritma. Za preciznu detekciju i pouzdano upravljanje važno je da su mjerenja kamera sinkronizirana te da je poznata frekvencija izračuna i objave pozicije drona. Frekvencija kojom Wiimote šalje podatke iznosi 100Hz. Za upravljanje po poziciji takva brzina je nepotrebna pa će se uzimati podaci frekvencijom od 20Hz. Robotski operacijski sustav će se koristiti za uspostavu komunikacije jer zadovoljava sve uvjete i omogućuje precizno i brzo izvršavanje više Python ili C++ skripti za dohvat, obradu i objavu informacija.
+ 
 \section{ROS - Robot Operating System}
+Velika složenost zadataka koji se postavljaju pred moderne robote zahtijeva korištenje programske infrastrukture koja omogućuje efikasno povezivanje nezavisno razvijenih podsustava u jedinstveni sustav koji može omogućiti autonomno djelovanje robota. Robotski operacijski sustav (ROS) pruža okolinu za razvoj modularne upravljačke programske podrške, komunikacijsku infrastrukturu koja povezuje programske komponente, te otvorenu biblioteku implementiranih algoritama. U posljednjih 5 godina, ROS je postao de facto standard za upravljanje robotima unutar akademske zajednice, te se njegova primjena širi i na industriju.
+
+ROS nam u ovom projektu olakšava komunikaciju između nezavisnih Python skripti preko publish/subscribe sistema. Također nam omogućuje lako snimanje podataka koje objavljuje neka od skripti i ponovno objavljivanje tih podataka kasnije.
+
+ROS čvor (node) je proces koji vrši izračune i obradu informacija. Više čvorova međusobno komunicira preko tema (topics). Kontrolni sustav će obično imati mnogo čvorova koji vrše manje specijalizirane zadatke. Prednost ovakvog sustava s mnogo čvorova je otpornost na greške jer se greške i rušenja u programu svode na rušenja pojedinog čvora, a ne cijelog sustava. Složenost koda je također smanjena zbog modularnosti te je testiranje sustava jednostavnije.
+
+ROS teme su imenovani kanali kroz koje se odvija anonimna komunikacija između čvorova. Čvorovi se mogu pretplatiti na bilo koju od prisutnih tema pomoću Subscriber objekta ili mogu objavljivati podatke u zadanoj temi pomoću Publisher objekta. Tema može imati više pretplaćenih čvorova (subscribers) i objavljujućih čvorova (publishers). Vrsta teme ovisi o tipu poruke koja je objavljena na nju. Pretplaćeni čvorovi moraju dohvaćati tip podataka koji odgovara vrsti teme.
+
+\section{ROS - Implementacija}
+Sustav za globalnu viziju će se sastojati od tri čvora. Po čvor za primanje podataka sa svakog Wiimotea te čvor za obradu dobivenih mjerenja Wiimotea i objavu izračunate pozicije i orijentacije. Čvor za komunikaciju s Wiimoteom već postoji pa je skinut s interneta. Koristi se wiimote paket iz skupa paketa joystick\textunderscore drivers (\url{https://github.com/ros-drivers/joystick_drivers}). Ovaj paket se ne može koristiti za uspostavu komunikacije s više Wiimoteova. Ako se povežu oba Wiimotea pomoću njega, čvorovi će objavljivati mjerenja na istu temu i time brisati objave jedan drugom pa nije moguće dohvaćati mjerenja. Problem je riješen dodavanjem "id" parametra. Prilikom pokretanja čvora i povezivanja s Wiimoteom zadajemo identifikacijski broj koji mijenja naziv tema tako da dopiše na kraj postojećeg naziva teme. 
 
 \chapter{Izračun pozicije i orijentacije}
 
