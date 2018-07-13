@@ -2,6 +2,7 @@
 \usepackage{booktabs}
 \usepackage[final]{pdfpages}
 \usepackage{hyperref}
+\usepackage{amsmath}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -129,6 +130,129 @@ Nakon što uspješno primi detektirane piksele od obje kamere, čvor za obradu i
 Nakon što su kamere postavljene i usmjerene, markeri postavljeni na dronu i komunikacija uspostavljena, slijedi problem izračuna globalne pozicije točke iz poznatih piksela na kamerama. Svaki Wiimote objavljuje piksel na kojem je detektirao infracrveni marker. Taj piksel je zapisan u obliku (x,y) gdje x predstavlja stupac u kojem je piksel s prvim stupcem na lijevom kraju slike, a zadnjim stupcem (1024. stupac) na desnom kraju slike, dok y predstavlja redak s prvim retkom na dnu slike, a zadnjim na vrhu (768. red). Potrebno je iz para piksela (x$_1$, y$_1$) za prvi Wiimote i (x$_2$, y$_2$) za drugi Wiimote izračunati poziciju te točke u globalnim koordinatama (x$_G$, y$_G$, z$_G$). Prvi postupak kojim se to pokušalo postići je pomoću geometrije i poznatih parametara kamere.
 
 \section{Geometrijski postupak}
+U ovom postupku koristiti će se "pinhole" model kamere za opis matematičkog odnosa koordinata točke u tri dimenzije i njezine projekcije na slikovnu ravninu. Ovaj model opisuje kameru točkom i ne uzima u obzir utjecaje leće poput iskrivljenja slike i zamućenje objekata koji nisu u fokusu. Točnost pinhole modela opada udaljavanjem od središta slike prema rubovima zbog povećanja iskrivljenja slike.
+
+\subsection{Formiranje slike u pinhole kameri}
+Sve zrake svjetlosti koje ulaze u točkasti model kamere i formiraju sliku prolaze kroz optički centar. Slikovna ravnina kamere je pomaknuta iza optičkog centra za udaljenost koja odgovara žarišnoj duljini kamere \textit{f}. Dobivena slika na slikovnoj ravnini je izokrenuta pa se ona dodatno invertira kako bi dobili krajnju sliku. Inverzija slikovne ravnine odgovara projekciji točke na ravninu koja je postavljena ispred optičkog centra za žarišnu duljinu kamere. Središte 3-D koordinatnog sustava kamere (X, Y, Z) postavljeno je u optički centar \textit{O}. Koordinatni sustav slikovne ravnine (x', y') postavljen je u točki gdje Z-os koordinatnog sustava kamere siječe slikovnu ravninu.
+
+Sve jednadžbe vezane uz projekciju slijede iz sličnosti trokuta formiranih stvarnom točkom \textit{p}(x, y, z) u koordinatnom sustavu kamere, projekcijom te točke u koordinatnom sustavu slikovne ravnine i optičkim centrom.
+
+\begin{equation}
+\frac{x'}{x} = \frac{f}{z}
+\label{eq:projekcija1}
+\end{equation}
+
+\begin{equation}
+\frac{y'}{y} = \frac{f}{z}
+\label{eq:projekcija2}
+\end{equation}
+
+\subsection{Određivanje točke pravcima}
+Iz jednadžbi \ref{eq:projekcija1} i \ref{eq:projekcija2} vidi se da je potrebno poznavati žarišnu duljinu kamere \textit{f}, projiciranu točku (x', y') te barem jedan vektor (x, y ili z) točke \textit{p} ako želimo odrediti koordinatu na kojoj se točka nalazi. Treba riješiti problem određivanja tri parametra iz dvije jednadžbe. Premda je poznato da su točka, njezina projekcija i optički centar na istom pravcu, moguće je izračunati taj pravac. Žarišna udaljenost Wiimote kamere iznosi $f=1280$. Poznat je broj piksela od sredine slike prema rubovima pa se računa maksimalni vertikalni i horizontalni kut pod kojim pravac može ulaziti u kameru.
+
+\begin{equation}
+\alpha_{max} = arctg\bigg(\frac{x'_{max}}{f}\bigg)
+\label{eq:alpha1}
+\end{equation}
+
+\begin{equation}
+\beta_{max} = arctg\bigg(\frac{y'_{max}}{f}\bigg)
+\label{eq:beta1}
+\end{equation}
+
+\vspace{5mm}
+
+Iz rezolucije Wiimote kamere koja iznosi 1024x768 dolazimo do vrijednosti:
+
+\begin{equation}
+x'_{max} = \frac{1024}{2} = 512 \qquad\text{i}\qquad y'_{max} = \frac{768}{2} = 384
+\label{eq:pix_max}
+\end{equation}
+
+\vspace{5mm}
+
+Nakon uvrštavanja vrijednosti \ref{eq:pix_max} u jednadžbe \ref{eq:alpha1} i \ref{eq:beta1} dolazimo do vrijednosti maksimalnog vertikalnog i horizontalnog kuta pravca koje iznose $\alpha_{max} = 21.8^{\circ} \quad\text{i}\quad \beta_{max} = 16.7^{\circ}$ . Kako bi se saznalo za koliko svaki piksel po x' osi slike i po y' osi slike mijenja $\alpha$ i $\beta$ kut pravca, maksimalne vrijednosti kuteva dijele se s $x'_{max}$ odnosno $y'_{max}$:
+
+\begin{equation}
+\Delta\alpha = \frac{\alpha_{max}}{x'_{max}} = 0.0426^{\circ}
+\label{eq:d_alpha}
+\end{equation}  
+
+\begin{equation}
+\Delta\beta = \frac{\beta_{max}}{y'_{max}} = 0.0435^{\circ}
+\label{eq:d_beta}
+\end{equation}
+
+\vspace{5mm}
+
+Jednadžbe \ref{eq:d_alpha} i \ref{eq:d_beta} vrijede u idealnom slučaju kada ne dolazi do iskrivljenja slike na rubovima. Poznato je za koliko stupnjeva svaki piksel po x' osi i y' osi mijenja usmjerenje pravca od pravca koji izlazi ravno iz kamere (po Z-osi koordinatnog sustava kamere). Slijede jednadžbe za izračun kuteva zakreta iz poznatog piksela (x', y'):
+
+\begin{equation}
+\alpha = (512 - x')\Delta\alpha
+\label{eq:alpha}
+\end{equation}
+
+\begin{equation}
+\beta = (-384 + y')\Delta\beta
+\label{eq:beta}
+\end{equation}
+
+\vspace{5mm}
+
+Iz poznatih kuteva slijedi izračun jediničnog vektora u koordinatnom sustavu kamere \textit{O} koji pokazuje u smjeru pravca na kojem leži točka \textit{p}:
+
+\begin{align}
+x &= sin(\alpha)cos(\beta) \\
+y &= sin(\beta) \\
+z &= cos(\alpha)cos(\beta)
+\end{align}
+
+\vspace{5mm}
+
+Sljedeći korak je transformacija vektora koji pokazuje na točku iz lokalnog koordinatnog sustava kamere (X, Y, Z) u globalni koordinatni sustav ($X_G$, $Y_G$, $Z_G$). Prvo će se izvršiti rotacija tog vektora pa onda translacija. Iz poznate pozicije kamere i orijentacije njenog lokalnog koordinatnog sustava računamo translacijsku i rotacijsku matricu. Koristi se Z-Y-X rotacijska matrica, što znači da se lokalni koordinatni sustav prvo rotira za kut $\psi$ oko svoje Z-osi, onda rotira za kut $\theta$ oko svoje novo pozicionirane Y-osi, te na kraju rotira za kut $\phi$ oko X-osi. Za svaku od ovih rotacija, koristi se pripadna rotacijska matrica te se množe u ispravnom poretku $R_{Z}(\psi)R_{Y}(\theta)R_{X}(\phi)$:
+
+\begin{equation}
+	\begin{bmatrix}
+		X_G \\
+		Y_G \\
+		Z_G
+	\end{bmatrix}
+	= R_{Z}(\psi)R_{Y}(\theta)R_{X}(\phi)\cdot
+	\begin{bmatrix}
+		X \\
+		Y \\
+		Z 
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+	R_{Z}(\psi) = 
+	\begin{bmatrix}
+		cos(\psi) & -sin(\psi) & 0 \\
+		sin(\psi) & cos(\psi) & 0 \\
+		0 & 0 & 1 \\
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+	R_{Y}(\theta) = 
+	\begin{bmatrix}
+		cos(\theta) & 0 & sin(\theta) \\
+		0 & 1 & 0 \\
+		-sin(\theta) & 0 & cos(\theta) \\
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+	R_{X}(\phi) = 
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & cos(\phi) & -sin(\phi) \\
+		0 & sin(\phi) & cos(\phi) \\
+	\end{bmatrix}
+\end{equation}
+
+
 
 \section{Postupak pomoću neuronske mreže}
 
