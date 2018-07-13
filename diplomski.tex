@@ -209,7 +209,7 @@ z &= cos(\alpha)cos(\beta)
 
 \vspace{5mm}
 
-Sljedeći korak je transformacija vektora koji pokazuje na točku iz lokalnog koordinatnog sustava kamere (X, Y, Z) u globalni koordinatni sustav ($X_G$, $Y_G$, $Z_G$). Prvo će se izvršiti rotacija tog vektora pa onda translacija. Iz poznate pozicije kamere i orijentacije njenog lokalnog koordinatnog sustava računamo translacijsku i rotacijsku matricu. Koristi se Z-Y-X rotacijska matrica, što znači da se lokalni koordinatni sustav prvo rotira za kut $\psi$ oko svoje Z-osi, onda rotira za kut $\theta$ oko svoje novo pozicionirane Y-osi, te na kraju rotira za kut $\phi$ oko X-osi. Za svaku od ovih rotacija, koristi se pripadna rotacijska matrica te se množe u ispravnom poretku $R_{Z}(\psi)R_{Y}(\theta)R_{X}(\phi)$:
+Sljedeći korak je transformacija vektora koji pokazuje na točku iz lokalnog koordinatnog sustava kamere (X, Y, Z) u globalni koordinatni sustav ($X_G$, $Y_G$, $Z_G$). Prvo će se izvršiti rotacija tog vektora pa onda translacija. Iz poznate pozicije kamere i orijentacije njenog lokalnog koordinatnog sustava računamo translacijsku i rotacijsku matricu. Koristi se Z-Y-X rotacijska matrica, što znači da se lokalni koordinatni sustav prvo rotira za kut $\psi$ oko svoje Z-osi, onda rotira za kut $\theta$ oko svoje novo pozicionirane Y-osi, te na kraju rotira za kut $\phi$ oko X-osi. Za svaku od ovih rotacija, koristi se pripadna rotacijska matrica te se množe u ispravnom poretku $R_{Z}(\psi)R_{Y}(\theta)R_{X}(\phi)$.
 
 \begin{equation}
 	\begin{bmatrix}
@@ -222,6 +222,11 @@ Sljedeći korak je transformacija vektora koji pokazuje na točku iz lokalnog ko
 		X \\
 		Y \\
 		Z 
+	\end{bmatrix}
+	+ \begin{bmatrix}
+		X_{trans} \\
+		Y_{trans} \\
+		Z_{trans} 
 	\end{bmatrix}
 \end{equation}
 
@@ -251,6 +256,10 @@ Sljedeći korak je transformacija vektora koji pokazuje na točku iz lokalnog ko
 		0 & sin(\phi) & cos(\phi) \\
 	\end{bmatrix}
 \end{equation}
+
+\vspace{5mm}
+
+Nakon što je završena transformacija vektora u globalni koordinatni sustav, poznat nam je pravac na kojem leži točka. Da bi se mogla odrediti točna pozicija te točke na pravcu potrebna je druga kamera. Kada se isti postupak određivanja pravca na kojem leži točka obavi i za drugu kameru, traži se presjek pravca iz prve i iz druge kamere u idealnom slučaju. Zbog ručnog postavljanja kuteva zakreta kamera, diskretizacije piksela i nesavršenosti kamera, slučaj da se pravci sijeku je skoro nemoguć. Zato se traže točke na oba pravca gdje su pravci najbliži jedan drugom. 
 
 
 
