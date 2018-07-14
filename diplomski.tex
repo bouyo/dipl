@@ -318,6 +318,8 @@ Potrebno je dobiti $t_1$ za koji vrijedi jednadžba \ref{eq:presjek}. Rješavanj
 t_1 = \frac{(\bm{p_2} - \bm{p_1})\cdot \bm{n_2}}{\bm{d_1}\cdot\bm{n_2}}
 \end{equation}
 
+\vspace{5mm}
+
 Ponavljanjem postupka za pravac $\bm{l_2}$ dobit će se $t_2$. Uvrštavanjem izračunatih $t_1$ i $t_2$ u jednadžbe pravaca $\bm{l_1}$ i $\bm{l_2}$ (jednadžba \ref{eq:pravci}) dobit će se najbliže točke na pravcima, $\bm{c_1}$ i $\bm{c_2}$.
 
 \begin{equation}
@@ -327,8 +329,27 @@ Ponavljanjem postupka za pravac $\bm{l_2}$ dobit će se $t_2$. Uvrštavanjem izr
 \begin{equation}
 \bm{c_2} = \bm{p_2} + \frac{(\bm{p_1} - \bm{p_2})\cdot \bm{n_1}}{\bm{d_2}\cdot\bm{n_1}}\bm{d_2}
 \end{equation}
+
+\vspace{5mm}
+ 
+Opisani postupak pronalaska najbližih točaka dvaju pravaca koristi se u ROS čvoru zaduženom za obradu informacija pristiglih od kamera i objavu pozicije i orijentacije drona. Ovaj čvor pokreće se Python skriptom \textit{wii\textunderscore detection.py}. Funkcija \textit{line\textunderscore distance} zadužena je za pronalazak točaka i njihove udaljenosti.
+
+Svi koraci opisani u ovom odlomku izvršavaju se unutar \textit{wii\textunderscore detection} čvora. Prvi korak je učitavanje mjerenja oba Wiimotea. Iz dobivenih piksela vrši se izračun pravca na kojem je marker u lokalnom koordinatnom sustavu kamere. Izračunati pravci se prebacuju iz lokalnih koordinata u globalne. Od svake kamere se dobiva od nula do tri pravca. Potrebno je upariti ispravne pravce prve i druge kamere kako bi se dobile dobre točke. Svaki pravac prve kamere se uspoređuje sa pravcima druge kamere i traži se najmanja udaljenost. Uzima se pravac druge kamere kojem je pravac prve kamere najbliži za izračun pozicije markera prema kojem ti pravci gledaju. Ukoliko nije niti jedan marker detektiran, objavljuje se pozicija drona $x=-1.0$, $y=-1.0$, $z=-1.0$. Ukoliko je detektiran samo jedan marker, objavljuje se pozicija tog markera. Kod dva ili tri markera dodatno se računa pozicija centra drona te njegova orijentacija.
  
 \section{Postupak pomoću neuronske mreže}
+
+Drugi postupak koji se koristio za određivanje pozicije markera iz para piksela dobivenih od kamera bio je postupak pomoću neuronske mreže. Kod geometrijskog postupka nisu se uzeli u obzir intrinzični parametri kamera te su kamere morale biti vrlo precizno postavljene kako ne bi došlo do promašivanja pravaca i krive detekcije. Cilj ovog postupka je naučiti jednostavnu unaprijednu (\textit{engl.} feedforward) neuronsku mrežu odgovarajućih dimenzija kako preslikati parove piksela (x$_1$, y$_1$) za prvi Wiimote i (x$_2$, y$_2$) za drugi Wiimote u globalne koordinate točke (x$_G$, y$_G$, z$_G$). Dobro naučena neuronska mreža bi trebala moći precizno modelirati to preslikavanje, čak ako postoje neki nepoznati utjecaji i nelinearnosti. Mana ovog postupka je da se ne smije mijenjati nagib i pozicija kamera jer se učenje vrši s točno određenim položajem kamera.
+
+\subsection{Osnove neuronskih mreža}
+
+Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja bioloških neuronskih mreža. Biološki neuron, kao osnovna gradivna jedinica biološke neuronske mreže, prima i obrađuje informacije od drugih neurona i/ili od osjetilnih organa. Može se pojednostavljeno prikazati kao stanica sastavljena od tijela (soma), mnoštva dendrita i aksona. Mali razmak između završetka aksona prethodnoga neurona i dendrita sljedećeg neurona naziva se sinapsa. Akson jednoga neurona formira sinaptičke veze s mnoštvom drugih neurona. Impulsi, koji se generiraju u tijelu neurona, putuju kroz akson do sinapsi. Ovisno o učinkovitosti svakog pojedinačnog sinaptičkoga prijenosa, signali različitog intenziteta dolaze do dendrita. Učinkovitost sinaptičkoga prijenosa kroz neku sinapsu ovisi o njezinom elektrokemijskom stanju, koje je rezultat prethodnih sinaptičkih prijenosa kroz nju. Signali se od sinapsi dendritima proslijeđuju do tijela neurona, gdje se prikupljaju i obrađuju. Ovi signali mogu za tijelo neurona biti pobuđujući ili smirujući. Matematički gledano, pobuđujući i smirujući signali imaju suprotan predznak. Ako je njihova kumulativna vrijednost tijekom kratkog vremenskog intervala veća od praga osjetljivosti neurona, tijelo neurona generira impulse (tzv. aktivacijske potencijale) koji se šalju duž aksona prema drugim neuronima, a ako je manja, neuron ostaje nepobuđen i ne generira impulse.
+
+\vspace{5mm}
+
+\textit{Perceptron} je jednostavan model umjetnog neurona koji vrši slične operacije kao i biološki neuron. Sinaptička je operacija predstavljena množenjem svakog ulaznog signala $x_i$ s težinskim koeficijentom $w_i$. Otežani se ulazni signali zbrajaju i njihov se zbroj uspoređuje s pragom osjetljivosti neurona $w_{n+1}$. Ako je zbroj otežanih signala veći od praga osjetljivosti neurona, nelinearna aktivacijska funkcija $\psi$ generira izlazni signal neurona $y$ iznosa jedan, a ako je manji, izlaz neurona je nula.
+
+\subsection{Implementacija neuronske mreže}
+
 
 
 \chapter{Rezultati}
