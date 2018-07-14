@@ -3,6 +3,7 @@
 \usepackage[final]{pdfpages}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{bm}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -259,10 +260,74 @@ Sljedeći korak je transformacija vektora koji pokazuje na točku iz lokalnog ko
 
 \vspace{5mm}
 
-Nakon što je završena transformacija vektora u globalni koordinatni sustav, poznat nam je pravac na kojem leži točka. Da bi se mogla odrediti točna pozicija te točke na pravcu potrebna je druga kamera. Kada se isti postupak određivanja pravca na kojem leži točka obavi i za drugu kameru, traži se presjek pravca iz prve i iz druge kamere u idealnom slučaju. Zbog ručnog postavljanja kuteva zakreta kamera, diskretizacije piksela i nesavršenosti kamera, slučaj da se pravci sijeku je skoro nemoguć. Zato se traže točke na oba pravca gdje su pravci najbliži jedan drugom. 
+Nakon što je završena transformacija vektora u globalni koordinatni sustav, poznat nam je pravac na kojem leži točka. Da bi se mogla odrediti točna pozicija te točke na pravcu potrebna je druga kamera. Kada se isti postupak određivanja pravca na kojem leži točka obavi i za drugu kameru, traži se presjek pravca iz prve i iz druge kamere u idealnom slučaju. Zbog ručnog postavljanja kuteva zakreta kamera, diskretizacije piksela i nesavršenosti kamera, slučaj da se pravci sijeku je skoro nemoguć. Zato se traže točke na oba pravca gdje su pravci najbliži jedan drugom.
 
+Za izračun najbližih točki na pravcima, kreće se od parametarske jednadžbe pravca koja glasi:
 
+\begin{equation}
+\bm{l} = \bm{p_0} + \bm{d}\cdot t
+\label{eq:pravac}
+\end{equation}
 
+\vspace{5mm}
+
+U jednadžbi \ref{eq:pravac} $\bm{p_0}$ je neka poznata točka na pravcu, $\bm{d}$ je vektor smjera pravca, a $t$ je skalar koji određuje pomak točke od $\bm{p_0}$ po pravcu u smjeru $\bm{d}$.
+
+Ako su poznate jednadžbe dvaju pravaca: 
+\begin{equation}
+\bm{l_1} = \bm{p_1} + \bm{d_1}\cdot t_1 \qquad\text{i}\qquad \bm{l_2} = \bm{p_2} + \bm{d_2}\cdot t_2
+\label{eq:pravci}
+\end{equation}
+
+Pravac koji povezuje najbliže točke pravca $\bm{l_1}$ i $\bm{l_2}$ mora biti okomit na oba pravca. Vektorskim produktom vektora smjera pravaca $\bm{d_1}$ i $\bm{d_2}$ dobiva se vektor tog okomitog pravca, $\bm{n}$.
+
+\begin{equation}
+\bm{n} = \bm{d_1} \times \bm{d_2}
+\end{equation}
+
+Najbliža točka na pravcu $\bm{l_1}$ pravcu $\bm{l_2}$ je na presjecištu pravca $\bm{l_1}$ i ravnine koja se dobi širenjem pravca $\bm{l_2}$ u smjeru $\bm{n}$. Jednadžba te ravnine može se izraziti kao skup točaka $\bm{p}$ za koje vrijedi:
+
+\begin{equation}
+(\bm{p} - \bm{p_0})\cdot\bm{n_R} = 0
+\label{eq:ravnina}
+\end{equation}
+
+U jednadžbi \ref{eq:ravnina}, $\bm{p_0}$ označava točku koja se nalazi na ravnini, a $\bm{n_R}$ označava vektor normale te ravnine. Ravnina koja nam je potrebna za pronaći najbližu točku na pravcu $\bm{l_1}$, sadrži točku $\bm{p_2}$, a jednadžba njene normale $\bm{n_2}$ dobit će se vektorskim produktom vektora smjera pravca $\bm{d_2}$ i $\bm{n}$.
+
+\begin{equation}
+\bm{n_2} = \bm{d_2} \times \bm{n} = \bm{d_2} \times (\bm{d_1} \times \bm{d_2})
+\end{equation}
+
+Jednadžba ravnine koja sadrži pravac $\bm{l_2}$ i najbližu točku pravca $\bm{l_1}$ tada glasi:
+
+\begin{equation}
+(\bm{p} - \bm{p_2})\cdot \bm{n_2} = 0
+\label{eq:ravnina2}
+\end{equation}
+
+Kako bi se dobila točka u kojoj pravac $\bm{l_1}$ sječe ovu ravninu, u jednadžbu \ref{eq:ravnina2} uvrštava se jednadžba za pravac $\bm{l_1}$.
+
+\begin{equation}
+(\bm{p_1} + \bm{d_1}\cdot t_1 - \bm{p_2})\cdot \bm{n_2} = 0
+\label{eq:presjek}
+\end{equation}
+
+Potrebno je dobiti $t_1$ za koji vrijedi jednadžba \ref{eq:presjek}. Rješavanjem jednadžbe za $t_1$ dobije se:
+
+\begin{equation}
+t_1 = \frac{(\bm{p_2} - \bm{p_1})\cdot \bm{n_2}}{\bm{d_1}\cdot\bm{n_2}}
+\end{equation}
+
+Ponavljanjem postupka za pravac $\bm{l_2}$ dobit će se $t_2$. Uvrštavanjem izračunatih $t_1$ i $t_2$ u jednadžbe pravaca $\bm{l_1}$ i $\bm{l_2}$ (jednadžba \ref{eq:pravci}) dobit će se najbliže točke na pravcima, $\bm{c_1}$ i $\bm{c_2}$.
+
+\begin{equation}
+\bm{c_1} = \bm{p_1} + \frac{(\bm{p_2} - \bm{p_1})\cdot \bm{n_2}}{\bm{d_1}\cdot\bm{n_2}}\bm{d_1}
+\end{equation}
+
+\begin{equation}
+\bm{c_2} = \bm{p_2} + \frac{(\bm{p_1} - \bm{p_2})\cdot \bm{n_1}}{\bm{d_2}\cdot\bm{n_1}}\bm{d_2}
+\end{equation}
+ 
 \section{Postupak pomoću neuronske mreže}
 
 

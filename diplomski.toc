@@ -16,7 +16,7 @@
 \contentsline {section}{\numberline {4.1}Geometrijski postupak}{10}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Formiranje slike u pinhole kameri}{10}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}Odre\IeC {\dj }ivanje to\IeC {\v c}ke pravcima}{11}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Postupak pomo\IeC {\'c}u neuronske mre\IeC {\v z}e}{13}{section.4.2}
-\contentsline {chapter}{\numberline {5}Rezultati}{14}{chapter.5}
-\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{15}{chapter.6}
-\contentsline {chapter}{Literatura}{16}{chapter*.3}
+\contentsline {section}{\numberline {4.2}Postupak pomo\IeC {\'c}u neuronske mre\IeC {\v z}e}{14}{section.4.2}
+\contentsline {chapter}{\numberline {5}Rezultati}{15}{chapter.5}
+\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{16}{chapter.6}
+\contentsline {chapter}{Literatura}{17}{chapter*.3}
