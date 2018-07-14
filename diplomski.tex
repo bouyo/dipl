@@ -348,6 +348,37 @@ Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja biološ
 
 \textit{Perceptron} je jednostavan model umjetnog neurona koji vrši slične operacije kao i biološki neuron. Sinaptička je operacija predstavljena množenjem svakog ulaznog signala $x_i$ s težinskim koeficijentom $w_i$. Otežani se ulazni signali zbrajaju i njihov se zbroj uspoređuje s pragom osjetljivosti neurona $w_{n+1}$. Ako je zbroj otežanih signala veći od praga osjetljivosti neurona, nelinearna aktivacijska funkcija $\psi$ generira izlazni signal neurona $y$ iznosa jedan, a ako je manji, izlaz neurona je nula.
 
+U radu će se koristiti statički model neurona. Njegov izlaz ovisi isključivo o trenutnim vrijednostima ulaznih signala i težinskim koeficijentima. Matematički se može opisati sljedećim izrazima:
+
+\begin{equation}
+v(t) = \sum_{i=1}^{n}w_i(t)\cdot x_i(t) - w_{n+1}
+\end{equation}
+
+\begin{equation}
+y(t) = \psi(v)
+\end{equation}
+
+gdje je:
+
+$\bm{X_u}(t) = [x_1(t),...,x_n(t)]^T$ - vektor ulaznih signala neurona;
+
+$\bm{W_s}(t) = [w_1(t),...,w_n(t)]^T$ - vektor sinaptičkih težinskih koeficijenata;
+
+$w_{n+1}$ - prag osjetljivosti neurona;
+
+$v(t)$ - izlaz operacije konfluencije;
+
+$\psi(v)$ - nelinearna aktivacijska funkcija;
+
+$y(t)$ - izlaz neurona
+
+\vspace{5mm}
+
+Većina neuronskih mreža zahtijeva učenje, to jest primjenu algoritama koji podešavaju iznose sinaptičkih težinskih koeficijenata. Ciljevi učenja mreže ovise o njezinoj primjeni, pa tako i izbor odgovarajućeg algoritma učenja. Iako je razvijen veliki broj raznih
+algoritama učenja neuronskih mreža, moguće ih je po načinu učenja mreže podijeliti na algoritme učenja temeljene na pogrešci, algoritme učenja temeljene na izlazu mreže i algoritme učenja s ojačanjem. U radu će biti korišteni algoritmi učenja temeljeni na pogrešci.
+
+\textit{Algoritmi učenja temeljeni na pogrešci} često se nazivaju i algoritmi s “učiteljem” jer zahtijevaju vanjski referentni signal (učitelj) s kojim uspoređuju dobiveni odziv neuronske mreže generirajući signal pogreške. Na temelju signala pogreške algoritam učenja mijenja sinaptičke težinske koeficijente neuronske mreže s ciljem poboljšanja njezina vladanja, to jest smanjenja pogreške. Ovi se algoritmi mogu primijeniti samo ako je unaprijed poznato željeno vladanje neuronske mreže, to jest podaci na osnovi kojih se mreža uči moraju sadržavati parove vrijednosti ulazno-izlaznih signala.
+
 \subsection{Implementacija neuronske mreže}
 
 
