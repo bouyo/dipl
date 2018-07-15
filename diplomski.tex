@@ -386,8 +386,13 @@ Kako bi se proveo algoritam učenja mreže temeljen na pogrešci, moraju se snim
 
 \textit{MATLAB Neural Network Toolbox} je alat unutar programa MATLAB koji sadrži algoritme, već istrenirane modele i aplikacije za stvaranje, treniranje, vizualizaciju i simulaciju jednostavnih i dubokih neuronskih mreža. Ovaj alat, zbog svoje jednostavnosti, ubrzava proces treniranja i testiranja neuronske mreže koja će dobro preslikavati piksele kamera u točku u prostoru. Potrebno je samo stvoriti matrice u MATLAB-u koje odgovaraju ulazima i izlazima iz sustava, pokrenuti aplikaciju upisom naredbe \textit{nnstart} i odabrati kakva nam neuronska mreža treba. Nakon treninga može se vidjeti preciznost mreže pa se može opet trenirati mreža sa promijenjenim parametrima kako bi se što više poboljšala preciznost. Unaprijedna mreža s jednim skrivenim slojem veličine 8 neurona dala je vrlo dobre rezultate te će se ona koristiti za određivanje pozicije markera.  
 
-Istrenirana neuronska mreža dobivena u MATLAB-u implementirana je u programskom jeziku Python kako bi se mogla koristiti u ROS čvoru. Čvor koji koristi neuronsku mrežu pokreće se skriptom \textit{wii\textunderscore neural.py}
+Istrenirana neuronska mreža dobivena u MATLAB-u implementirana je u programskom jeziku Python kako bi se mogla koristiti u ROS čvoru. Čvor koji koristi neuronsku mrežu pokreće se skriptom \textit{wii\textunderscore neural.py}. Problem kod ovog algoritma je kako upariti piksele prve i druge kamere ako je detektirano više markera. Wiimote vraća listu detektiranih piksela tako da je na prvom mjestu liste infracrveni marker najvećeg intenziteta. Ovaj problem je riješen postavljanjem dva infracrvena markera na dron, jedan naprijed, drugi iza, i održavanjem \textit{yaw} kuta drona da dron uvijek bude okrenut prema panou s kamerama. Ako dron ostane u tom položaju, znamo da prvi piksel liste odgovara prednjem markeru, a drugi piksel stražnjem. Čvor objavljuje poziciju i orijentaciju drona na temu \textit{drone\textunderscore position} kao što radi čvor za geometrijski postupak.
+
 \chapter{Rezultati}
+U nastavku će biti prikazani rezultati geometrijske metode i metode pomoću neuronskih mreža. Preciznost metoda će biti uspoređena i razmatrati će se moguća poboljšanja.
+
+\section{Rezultati }
+
 
 \chapter{Zaključak}
 Zaključak.
