@@ -13,14 +13,14 @@
 \contentsline {section}{\numberline {3.1}ROS - Robot Operating System}{9}{section.3.1}
 \contentsline {section}{\numberline {3.2}ROS - Implementacija}{10}{section.3.2}
 \contentsline {chapter}{\numberline {4}Izra\IeC {\v c}un pozicije i orijentacije}{12}{chapter.4}
-\contentsline {section}{\numberline {4.1}Geometrijski postupak}{12}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Formiranje slike u pinhole kameri}{12}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Odre\IeC {\dj }ivanje to\IeC {\v c}ke pravcima}{13}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Postupak pomo\IeC {\'c}u neuronske mre\IeC {\v z}e}{17}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Osnove neuronskih mre\IeC {\v z}a}{17}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Implementacija neuronske mre\IeC {\v z}e}{19}{subsection.4.2.2}
-\contentsline {chapter}{\numberline {5}Rezultati}{21}{chapter.5}
-\contentsline {section}{\numberline {5.1}Geometrijska metoda}{21}{section.5.1}
-\contentsline {section}{\numberline {5.2}Metoda s neuronskom mre\IeC {\v z}om}{21}{section.5.2}
-\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{22}{chapter.6}
-\contentsline {chapter}{Literatura}{23}{chapter*.9}
+\contentsline {section}{\numberline {4.1}Geometrijski postupak}{13}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Formiranje slike u pinhole kameri}{13}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Odre\IeC {\dj }ivanje to\IeC {\v c}ke pravcima}{14}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Postupak pomo\IeC {\'c}u neuronske mre\IeC {\v z}e}{18}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Osnove neuronskih mre\IeC {\v z}a}{18}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Implementacija neuronske mre\IeC {\v z}e}{20}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}Rezultati}{22}{chapter.5}
+\contentsline {section}{\numberline {5.1}Geometrijska metoda}{22}{section.5.1}
+\contentsline {section}{\numberline {5.2}Metoda s neuronskom mre\IeC {\v z}om}{23}{section.5.2}
+\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{24}{chapter.6}
+\contentsline {chapter}{Literatura}{25}{chapter*.17}

@@ -127,7 +127,7 @@ Druga opcija je korištenje retroreflektirajućih materijala. Retroreflektiraju�
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{retroreflective_vest}
-\caption{Odbijanje svjetlosti od retroreflektirajuće prizme}
+\caption{Demonstracija osvjetljenja reflektirajućeg prsluka}
 \label{fig:vesta}
 \end{figure}
 
@@ -162,6 +162,12 @@ Zbog ručnog postavljanja zakreta kamera koje unosi greške od nekoliko stupnjev
 Oba Wiimotea se povezuju bežično preko Bluetooth veze sa osobnim računalom. Računalo mora na neki način dohvatiti bitne informacije iz kamera, iz njih izračunati poziciju i orijentaciju drona u prostoru te na kraju objaviti izračunate vrijednosti kako bi se one mogle dohvatiti od strane upravljačkog algoritma. Za preciznu detekciju i pouzdano upravljanje važno je da su mjerenja kamera sinkronizirana te da je poznata frekvencija izračuna i objave pozicije drona. Frekvencija kojom Wiimote šalje podatke iznosi 100Hz. Za upravljanje po poziciji takva brzina je nepotrebna pa će se uzimati podaci frekvencijom od 20Hz. Robotski operacijski sustav će se koristiti za uspostavu komunikacije jer zadovoljava sve uvjete i omogućuje precizno i brzo izvršavanje više Python ili C++ skripti za dohvat, obradu i objavu informacija.
  
 \section{ROS - Robot Operating System}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.45\textwidth]{ros_kinetic}
+\caption{ROS Kinetic Kame logo}
+\label{fig:ros_kin}
+\end{figure}
 Velika složenost zadataka koji se postavljaju pred moderne robote zahtijeva korištenje programske infrastrukture koja omogućuje efikasno povezivanje nezavisno razvijenih podsustava u jedinstveni sustav koji može omogućiti autonomno djelovanje robota. Robotski operacijski sustav (ROS) pruža okolinu za razvoj modularne upravljačke programske podrške, komunikacijsku infrastrukturu koja povezuje programske komponente, te otvorenu biblioteku implementiranih algoritama. U posljednjih 5 godina, ROS je postao de facto standard za upravljanje robotima unutar akademske zajednice, te se njegova primjena širi i na industriju.
 
 ROS nam u ovom projektu olakšava komunikaciju između nezavisnih Python skripti preko publish/subscribe sistema. Također nam omogućuje lako snimanje podataka koje objavljuje neka od skripti i ponovno objavljivanje tih podataka kasnije.
@@ -170,25 +176,44 @@ ROS čvor (node) je proces koji vrši izračune i obradu informacija. Više čvo
 
 ROS teme su imenovani kanali kroz koje se odvija anonimna komunikacija između čvorova. Čvorovi se mogu pretplatiti na bilo koju od prisutnih tema pomoću Subscriber objekta ili mogu objavljivati podatke u zadanoj temi pomoću Publisher objekta. Tema može imati više pretplaćenih čvorova (subscribers) i objavljujućih čvorova (publishers). Vrsta teme ovisi o tipu poruke koja je objavljena na nju. Pretplaćeni čvorovi moraju dohvaćati tip podataka koji odgovara vrsti teme.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{ros_struktura}
+\caption{Pojednostavljeni prikaz komunikacijske strukture ROS-a}
+\label{fig:struktura}
+\end{figure}
+
 \section{ROS - Implementacija}
 Sustav za globalnu viziju će se sastojati od tri čvora. Po čvor za primanje podataka sa svakog Wiimotea te čvor za obradu dobivenih mjerenja Wiimotea i objavu izračunate pozicije i orijentacije. Čvor za komunikaciju s Wiimoteom već postoji pa je skinut s interneta. Koristi se "wiimote" paket iz skupa paketa "joystick\textunderscore drivers" (\url{https://github.com/ros-drivers/joystick_drivers}). Ovaj paket se ne može koristiti za uspostavu komunikacije s više Wiimoteova. Ako se povežu oba Wiimotea pomoću njega, čvorovi će objavljivati mjerenja na istu temu i time brisati objave jedan drugom pa nije moguće dohvaćati mjerenja. Problem je riješen dodavanjem "id" parametra. Prilikom pokretanja čvora i povezivanja s Wiimoteom zadajemo identifikacijski broj koji mijenja naziv tema tako da dopiše parametar "id" na kraj postojećeg naziva teme. Novi čvor koji se koristi pokreće se Python skriptom wiimote\textunderscore node2.py i nalazi se u paketu "wiimote".
 
 Ovime se postiže da umjesto jedne teme naziva /wiimote/state dobijemo dvije teme: /wiimote/state1 i /wiimote/state2. Sada je lako dohvatiti mjerenja oba Wiimotea i možemo spojiti više Wiimoteova ako će biti potrebno.
 
-Čvor za obradu mjerenja pretplaćeni je na /wiimote/state1 i /wiimote/state2 teme koje objavljuju modificirani čvorovi za dohvat podataka s Wiimoteova. Tip poruke koja se dohvaća je wiimote/State.msg tipa. Ovaj tip poruke sadrži mnoge nepotrebne podatke poput stanja tipki na Wiimoteu i njegovu akceleraciju pa je u funkciji dohvata potrebno izolirati samo važne podatke. Jedini potrebni podaci su pikseli na kojima su detektirani infracrveni izvori. Wiimote vraća taj podatak u obliku liste od 4 elementa, a svaki element je wiimote/IrSourceInfo.msg tipa podatka koji u sebi sadrži x i y detektiranog piksela. U nastavku je prikazan kod funkcije dohvata piksela.
-
-\vspace{5mm}  
+Čvor za obradu mjerenja pretplaćeni je na /wiimote/state1 i /wiimote/state2 teme koje objavljuju modificirani čvorovi za dohvat podataka s Wiimoteova. Tip poruke koja se dohvaća je wiimote/State.msg tipa. Ovaj tip poruke sadrži mnoge nepotrebne podatke poput stanja tipki na Wiimoteu i njegovu akceleraciju pa je u funkciji dohvata potrebno izolirati samo važne podatke. Jedini potrebni podaci su pikseli na kojima su detektirani infracrveni izvori. Wiimote vraća taj podatak u obliku liste od 4 elementa, a svaki element je wiimote/IrSourceInfo.msg tipa podatka koji u sebi sadrži x i y detektiranog piksela.
 
 Nakon što uspješno primi detektirane piksele od obje kamere, čvor za obradu izvršava izračun pozicije i orijentacije, koji će biti opisan kasnije u radu, te objavljuje dobivenu poziciju i orijentaciju na temu /drone\textunderscore position u obliku tipa podatka geometry\textunderscore msgs/Quaternion.msg. Quaternion tip poruke se koristi za objavu jer sadrži 4 varijable float64 tipa, a objavljena poruka nema veze sa stvarnim kvaternionima. Varijable "x", "y" i "z" predstavljaju poziciju u globalnom koordinatnom sustavu dok varijabla "w" predstavlja orijentaciju drona, to jest zakret njegovog lokalnog koordinatnog sustava u odnosu na globalni oko z-osi (yaw). Čvor koji ima funkciju upravljačkog algoritma drona će čitati iz teme /drone\textunderscore position što će omogućiti da se zatvori upravljačka petlja po poziciji i orijentaciji.
 
 \chapter{Izračun pozicije i orijentacije}
 Nakon što su kamere postavljene i usmjerene, markeri postavljeni na dronu i komunikacija uspostavljena, slijedi problem izračuna globalne pozicije točke iz poznatih piksela na kamerama. Svaki Wiimote objavljuje piksel na kojem je detektirao infracrveni marker. Taj piksel je zapisan u obliku (x,y) gdje x predstavlja stupac u kojem je piksel s prvim stupcem na lijevom kraju slike, a zadnjim stupcem (1024. stupac) na desnom kraju slike, dok y predstavlja redak s prvim retkom na dnu slike, a zadnjim na vrhu (768. red). Potrebno je iz para piksela (x$_1$, y$_1$) za prvi Wiimote i (x$_2$, y$_2$) za drugi Wiimote izračunati poziciju te točke u globalnim koordinatama (x$_G$, y$_G$, z$_G$). Prvi postupak kojim se to pokušalo postići je pomoću geometrije i poznatih parametara kamere.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=.6\textwidth]{wiimote2_rays}
+\caption{Projekcija markera na Wiimoteove}
+\label{fig:zrake}
+\end{figure}
+
 \section{Geometrijski postupak}
 U ovom postupku koristiti će se "pinhole" model kamere za opis matematičkog odnosa koordinata točke u tri dimenzije i njezine projekcije na slikovnu ravninu. Ovaj model opisuje kameru točkom i ne uzima u obzir utjecaje leće poput iskrivljenja slike i zamućenje objekata koji nisu u fokusu. Točnost pinhole modela opada udaljavanjem od središta slike prema rubovima zbog povećanja iskrivljenja slike.
 
 \subsection{Formiranje slike u pinhole kameri}
 Sve zrake svjetlosti koje ulaze u točkasti model kamere i formiraju sliku prolaze kroz optički centar. Slikovna ravnina kamere je pomaknuta iza optičkog centra za udaljenost koja odgovara žarišnoj duljini kamere \textit{f}. Dobivena slika na slikovnoj ravnini je izokrenuta pa se ona dodatno invertira kako bi dobili krajnju sliku. Inverzija slikovne ravnine odgovara projekciji točke na ravninu koja je postavljena ispred optičkog centra za žarišnu duljinu kamere. Središte 3-D koordinatnog sustava kamere (X, Y, Z) postavljeno je u optički centar \textit{O}. Koordinatni sustav slikovne ravnine (x', y') postavljen je u točki gdje Z-os koordinatnog sustava kamere siječe slikovnu ravninu.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{projekcija}
+\caption{Projekcija točke na slikovnu ravninu u \textit{pinhole} kameri}
+\label{fig:projekcija}
+\end{figure}
 
 Sve jednadžbe vezane uz projekciju slijede iz sličnosti trokuta formiranih stvarnom točkom \textit{p}(x, y, z) u koordinatnom sustavu kamere, projekcijom te točke u koordinatnom sustavu slikovne ravnine i optičkim centrom.
 
@@ -316,6 +341,13 @@ Sljedeći korak je transformacija vektora koji pokazuje na točku iz lokalnog ko
 
 Nakon što je završena transformacija vektora u globalni koordinatni sustav, poznat nam je pravac na kojem leži točka. Da bi se mogla odrediti točna pozicija te točke na pravcu potrebna je druga kamera. Kada se isti postupak određivanja pravca na kojem leži točka obavi i za drugu kameru, traži se presjek pravca iz prve i iz druge kamere u idealnom slučaju. Zbog ručnog postavljanja kuteva zakreta kamera, diskretizacije piksela i nesavršenosti kamera, slučaj da se pravci sijeku je skoro nemoguć. Zato se traže točke na oba pravca gdje su pravci najbliži jedan drugom.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{skew-lines}
+\caption{Prikaz pravaca $l_1$ i $l_2$ te najbližih točaka $x_1$ i $x_2$}
+\label{fig:skew-lines}
+\end{figure}
+
 Za izračun najbližih točki na pravcima, kreće se od parametarske jednadžbe pravca koja glasi:
 
 \begin{equation}
@@ -396,11 +428,23 @@ Drugi postupak koji se koristio za određivanje pozicije markera iz para piksela
 
 \subsection{Osnove neuronskih mreža}
 
-Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja bioloških neuronskih mreža. Biološki neuron, kao osnovna gradivna jedinica biološke neuronske mreže, prima i obrađuje informacije od drugih neurona i/ili od osjetilnih organa. Može se pojednostavljeno prikazati kao stanica sastavljena od tijela (soma), mnoštva dendrita i aksona. Mali razmak između završetka aksona prethodnoga neurona i dendrita sljedećeg neurona naziva se sinapsa. Akson jednoga neurona formira sinaptičke veze s mnoštvom drugih neurona. Impulsi, koji se generiraju u tijelu neurona, putuju kroz akson do sinapsi. Ovisno o učinkovitosti svakog pojedinačnog sinaptičkoga prijenosa, signali različitog intenziteta dolaze do dendrita. Učinkovitost sinaptičkoga prijenosa kroz neku sinapsu ovisi o njezinom elektrokemijskom stanju, koje je rezultat prethodnih sinaptičkih prijenosa kroz nju. Signali se od sinapsi dendritima proslijeđuju do tijela neurona, gdje se prikupljaju i obrađuju. Ovi signali mogu za tijelo neurona biti pobuđujući ili smirujući. Matematički gledano, pobuđujući i smirujući signali imaju suprotan predznak. Ako je njihova kumulativna vrijednost tijekom kratkog vremenskog intervala veća od praga osjetljivosti neurona, tijelo neurona generira impulse (tzv. aktivacijske potencijale) koji se šalju duž aksona prema drugim neuronima, a ako je manja, neuron ostaje nepobuđen i ne generira impulse.
+Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja bioloških neuronskih mreža. Biološki neuron, kao osnovna gradivna jedinica biološke neuronske mreže, prima i obrađuje informacije od drugih neurona i/ili od osjetilnih organa. Može se pojednostavljeno prikazati kao stanica sastavljena od tijela (soma), mnoštva dendrita i aksona (Slika \ref{fig:bio-neuron}). Mali razmak između završetka aksona prethodnoga neurona i dendrita sljedećeg neurona naziva se sinapsa. Akson jednoga neurona formira sinaptičke veze s mnoštvom drugih neurona. Impulsi, koji se generiraju u tijelu neurona, putuju kroz akson do sinapsi. Ovisno o učinkovitosti svakog pojedinačnog sinaptičkoga prijenosa, signali različitog intenziteta dolaze do dendrita. Učinkovitost sinaptičkoga prijenosa kroz neku sinapsu ovisi o njezinom elektrokemijskom stanju, koje je rezultat prethodnih sinaptičkih prijenosa kroz nju. Signali se od sinapsi dendritima proslijeđuju do tijela neurona, gdje se prikupljaju i obrađuju. Ovi signali mogu za tijelo neurona biti pobuđujući ili smirujući. Matematički gledano, pobuđujući i smirujući signali imaju suprotan predznak. Ako je njihova kumulativna vrijednost tijekom kratkog vremenskog intervala veća od praga osjetljivosti neurona, tijelo neurona generira impulse (tzv. aktivacijske potencijale) koji se šalju duž aksona prema drugim neuronima, a ako je manja, neuron ostaje nepobuđen i ne generira impulse.
 
-\vspace{5mm}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{bio_neuron}
+\caption{Model biološkog neurona}
+\label{fig:bio-neuron}
+\end{figure}
 
-\textit{Perceptron} je jednostavan model umjetnog neurona koji vrši slične operacije kao i biološki neuron. Sinaptička je operacija predstavljena množenjem svakog ulaznog signala $x_i$ s težinskim koeficijentom $w_i$. Otežani se ulazni signali zbrajaju i njihov se zbroj uspoređuje s pragom osjetljivosti neurona $w_{n+1}$. Ako je zbroj otežanih signala veći od praga osjetljivosti neurona, nelinearna aktivacijska funkcija $\psi$ generira izlazni signal neurona $y$ iznosa jedan, a ako je manji, izlaz neurona je nula.
+\textit{Perceptron} je jednostavan model umjetnog neurona koji vrši slične operacije kao i biološki neuron (Slika \ref{fig:neuron}). Sinaptička je operacija predstavljena množenjem svakog ulaznog signala $x_i$ s težinskim koeficijentom $w_i$. Otežani se ulazni signali zbrajaju i njihov se zbroj uspoređuje s pragom osjetljivosti neurona $w_{n+1}$. Ako je zbroj otežanih signala veći od praga osjetljivosti neurona, nelinearna aktivacijska funkcija $\psi$ generira izlazni signal neurona $y$ iznosa jedan, a ako je manji, izlaz neurona je nula.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{neuron}
+\caption{Model perceptrona}
+\label{fig:neuron}
+\end{figure}
 
 U radu će se koristiti statički model neurona. Njegov izlaz ovisi isključivo o trenutnim vrijednostima ulaznih signala i težinskim koeficijentima. Matematički se može opisati sljedećim izrazima:
 
@@ -446,7 +490,26 @@ Istrenirana neuronska mreža dobivena u MATLAB-u implementirana je u programskom
 U nastavku će biti prikazani rezultati geometrijske metode i metode pomoću neuronskih mreža. Preciznost metoda biti će uspoređena i razmatrati će se moguća poboljšanja.
 
 \section{Geometrijska metoda}
+Čvor koji je vraćao poziciju na temelju geometrijske metode imao je vrlo lošu preciznost i nije bio pouzdan. Zbog dijelova nosača Wiimotea, čiji su se kutevi morali ručno postavljati i zatezati, te zbog načina spajanja tog nosača na pano koji ne osigurava horizontalnost spoja, postavljeni kutevi u rotacijskim matricama nisu bili točni. Dodatnim mjerenjem kuteva i testiranjem dobilo se relativno precizno lociranje točaka (unutar 5cm), ali na vrlo malom području.
 
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+	\includegraphics[width=0.95\textwidth]{pravci_t7_1}
+	\caption*{}
+	\label{fig:t7_1}
+\end{subfigure}
+\begin{subfigure}[b]{.5\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{pravci_t7_2}
+	\caption*{}
+	\label{fig:t7_2}
+\end{subfigure}
+\caption{Pravci, izračunate točke i stvarna točka za točku br. 7}
+\label{fig:t7}
+\end{figure}
+
+Slika \ref{fig:t7} pokazuje detekciju za točku koja je bila za obje kamere blizu centra slikovne ravnine. Plavi pravac je pravac prve kamere, a crveni pravac pripada drugoj kameri. Pravci prolaze vrlo blizu jedan drugom i udaljenost njihovih najbližih točaka je unutar 2cm od stvarne pozicije markera, naznačene zelenom točkom. 
 
 \section{Metoda s neuronskom mrežom}
 
