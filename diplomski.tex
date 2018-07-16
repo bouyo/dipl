@@ -4,6 +4,9 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{bm}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\graphicspath{ {./img/} }
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -55,8 +58,14 @@ Zbog relativno velike udaljenosti na kojoj detekcija markera mora raditi i malih
 
 Infracrvena svjetlost je pogodna za detekciju na većim udaljenostima i uvjetima promjenjivog osvjetljenja. Većina materijala iz okoline reflektira vrlo malo infracrvene svjetlosti što osigurava pouzdanu detekciju infracrvenih izvora i materijala koji dobro reflektiraju infracrvenu svjetlost. Za detekciju pomoću infracrvene svjetlosti potrebni su okrugli markeri koji dobro reflektiraju infracrvenu svjetlost u svim smjerovima, kamere koje će detektirati svjetlost reflektiranu od markera i izvor infracrvene svjetlosti dovoljno velikog intenziteta i kuta zračenja da pokrije cijelo vidno polje kamere i željenu maksimalnu udaljenost markera.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{infrared}
+\caption{Prikaz infracrvenog zračenja na spektru elektromagnetskih zračenja}
+\end{figure}
+
 \subsection{Kamera}
-Testirane kamere su bile Pixy kamera sa IR-LOCK infracrvenom lećom i kamera unutar Wiimotea koja ima infracrvenu leću već ugrađenu. Obje kamere vraćaju piksele slike na kojima je detektirano infracrveno zraćenje. Valna duljina infracrvenog zraćenja koje kamere najbolje detektiraju iznosi oko 940nm. Wiimote šalje piksele od 4 najintenzivije infracrvene točke dok ih Pixy kamera može detektirati mnogo više, što u ovom slučaju ne igra ulogu zbog samo 3 potrebne točke.
+Testirane kamere su bile Pixy kamera sa IR-LOCK infracrvenom lećom (slika \ref{fig:pixy}) i kamera unutar Wiimotea (slika \ref{fig:wiimote}) koja ima infracrvenu leću već ugrađenu. Obje kamere vraćaju piksele slike na kojima je detektirano infracrveno zraćenje. Valna duljina infracrvenog zraćenja koje kamere najbolje detektiraju iznosi oko 940nm. Wiimote šalje piksele od 4 najintenzivije infracrvene točke dok ih Pixy kamera može detektirati mnogo više, što u ovom slučaju ne igra ulogu zbog samo 3 potrebne točke.
 
 Veza između Wiimotea i računala postiže se Bluetooth povezivanjem. Takva veza omogućuje veću udaljenost kamera i veću fleksibilnost kod postavljanja kamera. Direktna veza između računala i Pixy kamere može se postići mini USB kablom, a ako je nužna bežična veza potrebno je spojiti Pixy kameru na mikrokontroler koji će onda komunicirati bežično s računalom.
 
@@ -67,15 +76,60 @@ S druge strane, Pixy kamera ima ugrađenu mnogo kvalitetniju Omnivision OV9715 k
 
 Wiimote je bolji izbor zbog rezolucije, lakšeg povezivanja i postavljanja te niže cijene. Jedina mana mu je relativno usko vidno polje, ali taj problem se može riješiti dobrim pozicioniranjem kamera na dovoljnu udaljenost od radnog područja drona.
 
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+	\includegraphics[width=0.8\textwidth]{Nintendo-Wiimote}
+	\caption{Wiimote kontroler}
+	\label{fig:wiimote}
+\end{subfigure}
+\begin{subfigure}[b]{.4\textwidth}
+	\centering
+	\includegraphics[width=0.8\textwidth]{pixy}
+	\caption{Pixy kamera}
+	\label{fig:pixy}
+\end{subfigure}
+\caption{Testirane infracrvene kamere}
+\label{fig:cams}
+\end{figure}
+
 \subsection{Infracrveni LED izvor}
 Potrebno je montirati izvor infracrvene svjetlosti uz kameru i usmjeriti ga u smjeru gledanja kamere kako bi se dobila čim bolja detekcija markera. Izvor mora biti dovoljnog intenziteta da infracrvena svjetlost bude detektirana kamerom nakon što prođe udaljenost između kamere i markera, reflektira se od markera i vrati opet do kamere. U najudaljenijoj točci radnog prostora drona ta će udaljenost biti oko 4m. Obične jeftine infracrvene diode male snage takvu udaljenost neće moći uspješno pokriti za detekciju. Dodatni problem s takvim infracrvenim diodama je relativno mali kut zračenja koji iznosi najčešće između 15$^{\circ}$ i 30$^{\circ}$. Da bi se pokrio cijeli radni prostor drona i vidno polje kamere potrebno bi bilo staviti više takvih dioda oko kamere.
 
-Kako bi cijeli radni prostor bio dobro osvijetljen, koristiti će se infracrveni LED čipovi visoke snage od 3W (SMD LED Module) koji generira svjetlost valne duljine od 940nm. Osim veće udaljenosti koju pokriva, prednost ovakve vrste LED izvora je u širokom kutu zračenja koji iznosi 120$^{\circ}$. Tijekom testiranja ispostavilo se da 3W infracrveni LED izvori u kombinaciji s reflektirajućim markerom omogućuju detekciju markera na premaloj udaljenosti od oko 1m. Da bi se ostvarila detekcija pomoću reflektirajućeg markera potrebno bi bilo koristiti izvor jači od 10W. Zbog širokog kuta zraćenja i visoke snage, LED izvori mogu se dobro detektirati na udaljenosti do 3m pa su pogodni za markere ako se montiraju na drona.
+Kako bi cijeli radni prostor bio dobro osvijetljen, koristiti će se infracrveni LED čipovi visoke snage od 3W (SMD LED Module) koji generira svjetlost valne duljine od 940nm (Slika \ref{fig:led}). Osim veće udaljenosti koju pokriva, prednost ovakve vrste LED izvora je u širokom kutu zračenja koji iznosi 120$^{\circ}$. Tijekom testiranja ispostavilo se da 3W infracrveni LED izvori u kombinaciji s reflektirajućim markerom omogućuju detekciju markera na premaloj udaljenosti od oko 1m. Da bi se ostvarila detekcija pomoću reflektirajućeg markera potrebno bi bilo koristiti izvor jači od 10W. Zbog širokog kuta zraćenja i visoke snage, LED izvori mogu se dobro detektirati na udaljenosti do 3m pa su pogodni za markere ako se montiraju na drona.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\textwidth]{infrared_led}
+\caption{Infracrveni SMD LED modul}
+\label{fig:led}
+\end{figure}
 
 \subsection{Marker}
 Markeri koji će se nalaziti na bespilotnoj letjelici moraju biti što lakši zbog iznimno male nosivosti letjelice. Drugi zahtjev je da reflektiraju što više svjetlosti natrag prema kameri neovisno o položaju letjelice i markera. Materijali koji dobro reflektiraju infracrvenu svjetlost su neki metali (Al, Ag i Au) te oksidi metala poput SiO$_2$ i Al$_2$O$_3$. Ukoliko bi se koristili premazi ili boje koje sadrže navedene spojeve i elemente, oni bi se trebali nanjeti na lagani materijal oblika kugle koji će reflektirati svjetlost natrag kameri. U ovom slučaju važno je da marker ima oblik kugle kako bi se dio reflektirane svjetlosti, neovisno o poziciji markera i kamere, uvijek vraćao istim putem natrag prema kameri. Stiroporne kuglice zadovoljavaju zahtjeve za marker koji će biti premazan.
 
-Druga opcija je korištenje retroreflektirajućih materijala. Retroreflektirajući materijali reflektiraju svjetlost natrag izvoru svjetlosti uz minimalno rasipanje. Zraka svjetlosti koja dolazi prema retroreflektoru je paralelna i suprotnog smjera od reflektirane zrake. Retroreflektori su najčešće male staklene ili plastične prizme. Koriste se u prometu u boji za linije na cesti i prometne znakove, kod reflektirajućih prsluka,  očiju za bicikl, itd. U slučaju odabira retroreflektora nije nužno koristiti marker oblika kugle zbog svojstva da vraća svjetlost prema izvoru neovisno o kutu upada.
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{markers_dron}
+\caption{Okrugli OptiTrack markeri postavljeni na dronu}
+\label{fig:opti_markers}
+\end{figure}
+
+Druga opcija je korištenje retroreflektirajućih materijala. Retroreflektirajući materijali reflektiraju svjetlost natrag izvoru svjetlosti uz minimalno rasipanje. Zraka svjetlosti koja dolazi prema retroreflektoru je paralelna i suprotnog smjera od reflektirane zrake (Slika \ref{fig:retrorefleksija}). Retroreflektori su najčešće male staklene ili plastične prizme. Koriste se u prometu u boji za linije na cesti i prometne znakove, kod reflektirajućih prsluka,  očiju za bicikl, itd. U slučaju odabira retroreflektora nije nužno koristiti marker oblika kugle zbog svojstva da vraća svjetlost prema izvoru neovisno o kutu upada.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\textwidth]{retroreflector}
+\caption{Odbijanje svjetlosti od retroreflektirajuće prizme}
+\label{fig:retrorefleksija}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{retroreflective_vest}
+\caption{Odbijanje svjetlosti od retroreflektirajuće prizme}
+\label{fig:vesta}
+\end{figure}
 
 Zbog infracrvenog izvora premalog intenziteta nije moguće koristiti reflektirajuće markere pa će se sam izvor koristiti kao marker. Tri izvora pričvršćena su na bespilotnu letjelicu i spojena su u paraleli na dronovu bateriju. Ovim se zadovoljavaju uvjeti detekcije, ali se skraćuje trajanje baterije zbog dodatnog napajanja LED izvora. 
 
@@ -117,7 +171,7 @@ ROS čvor (node) je proces koji vrši izračune i obradu informacija. Više čvo
 ROS teme su imenovani kanali kroz koje se odvija anonimna komunikacija između čvorova. Čvorovi se mogu pretplatiti na bilo koju od prisutnih tema pomoću Subscriber objekta ili mogu objavljivati podatke u zadanoj temi pomoću Publisher objekta. Tema može imati više pretplaćenih čvorova (subscribers) i objavljujućih čvorova (publishers). Vrsta teme ovisi o tipu poruke koja je objavljena na nju. Pretplaćeni čvorovi moraju dohvaćati tip podataka koji odgovara vrsti teme.
 
 \section{ROS - Implementacija}
-Sustav za globalnu viziju će se sastojati od tri čvora. Po čvor za primanje podataka sa svakog Wiimotea te čvor za obradu dobivenih mjerenja Wiimotea i objavu izračunate pozicije i orijentacije. Čvor za komunikaciju s Wiimoteom već postoji pa je skinut s interneta. Koristi se "wiimote" paket iz skupa paketa "joystick\textunderscore drivers" (\url{https://github.com/ros-drivers/joystick_drivers}). Ovaj paket se ne može koristiti za uspostavu komunikacije s više Wiimoteova. Ako se povežu oba Wiimotea pomoću njega, čvorovi će objavljivati mjerenja na istu temu i time brisati objave jedan drugom pa nije moguće dohvaćati mjerenja. Problem je riješen dodavanjem "id" parametra. Prilikom pokretanja čvora i povezivanja s Wiimoteom zadajemo identifikacijski broj koji mijenja naziv tema tako da dopiše parametar "id" na kraj postojećeg naziva teme. Novi čvor koji se koristi pokreće se Python skriptom wiimote\textunderscore node.py i nalazi se u paketu "wiimote".
+Sustav za globalnu viziju će se sastojati od tri čvora. Po čvor za primanje podataka sa svakog Wiimotea te čvor za obradu dobivenih mjerenja Wiimotea i objavu izračunate pozicije i orijentacije. Čvor za komunikaciju s Wiimoteom već postoji pa je skinut s interneta. Koristi se "wiimote" paket iz skupa paketa "joystick\textunderscore drivers" (\url{https://github.com/ros-drivers/joystick_drivers}). Ovaj paket se ne može koristiti za uspostavu komunikacije s više Wiimoteova. Ako se povežu oba Wiimotea pomoću njega, čvorovi će objavljivati mjerenja na istu temu i time brisati objave jedan drugom pa nije moguće dohvaćati mjerenja. Problem je riješen dodavanjem "id" parametra. Prilikom pokretanja čvora i povezivanja s Wiimoteom zadajemo identifikacijski broj koji mijenja naziv tema tako da dopiše parametar "id" na kraj postojećeg naziva teme. Novi čvor koji se koristi pokreće se Python skriptom wiimote\textunderscore node2.py i nalazi se u paketu "wiimote".
 
 Ovime se postiže da umjesto jedne teme naziva /wiimote/state dobijemo dvije teme: /wiimote/state1 i /wiimote/state2. Sada je lako dohvatiti mjerenja oba Wiimotea i možemo spojiti više Wiimoteova ako će biti potrebno.
 
@@ -389,9 +443,12 @@ Kako bi se proveo algoritam učenja mreže temeljen na pogrešci, moraju se snim
 Istrenirana neuronska mreža dobivena u MATLAB-u implementirana je u programskom jeziku Python kako bi se mogla koristiti u ROS čvoru. Čvor koji koristi neuronsku mrežu pokreće se skriptom \textit{wii\textunderscore neural.py}. Problem kod ovog algoritma je kako upariti piksele prve i druge kamere ako je detektirano više markera. Wiimote vraća listu detektiranih piksela tako da je na prvom mjestu liste infracrveni marker najvećeg intenziteta. Ovaj problem je riješen postavljanjem dva infracrvena markera na dron, jedan naprijed, drugi iza, i održavanjem \textit{yaw} kuta drona da dron uvijek bude okrenut prema panou s kamerama. Ako dron ostane u tom položaju, znamo da prvi piksel liste odgovara prednjem markeru, a drugi piksel stražnjem. Čvor objavljuje poziciju i orijentaciju drona na temu \textit{drone\textunderscore position} kao što radi čvor za geometrijski postupak.
 
 \chapter{Rezultati}
-U nastavku će biti prikazani rezultati geometrijske metode i metode pomoću neuronskih mreža. Preciznost metoda će biti uspoređena i razmatrati će se moguća poboljšanja.
+U nastavku će biti prikazani rezultati geometrijske metode i metode pomoću neuronskih mreža. Preciznost metoda biti će uspoređena i razmatrati će se moguća poboljšanja.
 
-\section{Rezultati }
+\section{Geometrijska metoda}
+
+
+\section{Metoda s neuronskom mrežom}
 
 
 \chapter{Zaključak}
