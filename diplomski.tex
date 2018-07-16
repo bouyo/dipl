@@ -509,7 +509,43 @@ U nastavku će biti prikazani rezultati geometrijske metode i metode pomoću neu
 \label{fig:t7}
 \end{figure}
 
-Slika \ref{fig:t7} pokazuje detekciju za točku koja je bila za obje kamere blizu centra slikovne ravnine. Plavi pravac je pravac prve kamere, a crveni pravac pripada drugoj kameri. Pravci prolaze vrlo blizu jedan drugom i udaljenost njihovih najbližih točaka je unutar 2cm od stvarne pozicije markera, naznačene zelenom točkom. 
+Slike \ref{fig:t7} pokazuju detekciju za točku koja je bila za obje kamere blizu centra slikovne ravnine. Plavi pravac je pravac prve kamere, a crveni pravac pripada drugoj kameri. Pravci prolaze vrlo blizu jedan drugom i udaljenost njihovih najbližih točaka je unutar 2cm od stvarne pozicije markera, naznačene zelenom točkom. 
+
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+	\includegraphics[width=0.95\textwidth]{pravci_t8_1}
+	\caption*{}
+	\label{fig:t8_1}
+\end{subfigure}
+\begin{subfigure}[b]{.5\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{pravci_t8_2}
+	\caption*{}
+	\label{fig:t8_2}
+\end{subfigure}
+\caption{Pravci, izračunate točke i stvarna točka za točku br. 8}
+\label{fig:t8}
+\end{figure}
+
+Slike \ref{fig:t8} pokazuju detekciju za točku koja se nalazi u radijusu od 20cm od prethodne točke (slike \ref{fig:t7}) koja je dobro detektirana. Može se uočiti da pada preciznost odmakom projekcije markera od centra slikovne ravnine kamera. Usrednjavanjem najbližih točaka pravaca dobila bi se greška od oko 5cm. Slična greška je i za ostale točke na takvoj udaljenosti od pozicije na kojoj je detekcija precizna.
+
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+	\includegraphics[width=0.95\textwidth]{pravci_rub_1}
+	\caption*{}
+	\label{fig:rub_1}
+\end{subfigure}
+\begin{subfigure}[b]{.5\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{pravci_rub_2}
+	\caption*{}
+	\label{fig:rub_2}
+\end{subfigure}
+\caption{Pravci, izračunate točke i stvarna točka za točku br. 8}
+\label{fig:rub}
+\end{figure}
 
 \section{Metoda s neuronskom mrežom}
 
