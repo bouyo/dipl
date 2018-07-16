@@ -21,6 +21,6 @@
 \contentsline {subsection}{\numberline {4.2.2}Implementacija neuronske mre\IeC {\v z}e}{20}{subsection.4.2.2}
 \contentsline {chapter}{\numberline {5}Rezultati}{22}{chapter.5}
 \contentsline {section}{\numberline {5.1}Geometrijska metoda}{22}{section.5.1}
-\contentsline {section}{\numberline {5.2}Metoda s neuronskom mre\IeC {\v z}om}{23}{section.5.2}
-\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{24}{chapter.6}
-\contentsline {chapter}{Literatura}{25}{chapter*.19}
+\contentsline {section}{\numberline {5.2}Metoda s neuronskom mre\IeC {\v z}om}{24}{section.5.2}
+\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{25}{chapter.6}
+\contentsline {chapter}{Literatura}{26}{chapter*.19}

@@ -505,7 +505,7 @@ U nastavku će biti prikazani rezultati geometrijske metode i metode pomoću neu
 	\caption*{}
 	\label{fig:t7_2}
 \end{subfigure}
-\caption{Pravci, izračunate točke i stvarna točka za točku br. 7}
+\caption{Pravci, izračunate točke i stvarna točka za centralnu točku}
 \label{fig:t7}
 \end{figure}
 
@@ -524,7 +524,7 @@ Slike \ref{fig:t7} pokazuju detekciju za točku koja je bila za obje kamere bliz
 	\caption*{}
 	\label{fig:t8_2}
 \end{subfigure}
-\caption{Pravci, izračunate točke i stvarna točka za točku br. 8}
+\caption{Pravci, izračunate točke i stvarna točka za točku u blizini centralne}
 \label{fig:t8}
 \end{figure}
 
@@ -543,9 +543,13 @@ Slike \ref{fig:t8} pokazuju detekciju za točku koja se nalazi u radijusu od 20c
 	\caption*{}
 	\label{fig:rub_2}
 \end{subfigure}
-\caption{Pravci, izračunate točke i stvarna točka za točku br. 8}
+\caption{Pravci, izračunate točke i stvarna točka za rubnu točku}
 \label{fig:rub}
 \end{figure}
+
+Slike \ref{fig:rub} prikazuju detekciju za točku blizu ruba radnog prostora. Kako se marker odmiče od središta prema rubu prostora detekcije, dolazi do porasta greške. Primjećuje se da se pravci presporo zakreću od središta prema rubu. Do toga može doći zbog premalog $\Delta\alpha$ i/ili $\Delta\beta$. Također je vjerojatno da se zbog iskrivljenja slike na rubovima povećavaju $\Delta\alpha$ i $\Delta\beta$. Problem kod ove metode je u nepoznavanju intrinzičnih parametara kamere. Riješenje bi bila kalibracija kamere koja bi nam dala uvida u intrinzične parametre kamere. Kalibracija bi se mogla provesti pomoću dvije ili više infracrvenih LED dioda postavljenih na objekt na poznatim udaljenostima.
+
+Metoda s neuronskom mrežom bila je brža opcija od osmišljanja i pisanja algoritma kalibracije za geometrijsku metodu.
 
 \section{Metoda s neuronskom mrežom}
 
