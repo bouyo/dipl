@@ -621,7 +621,64 @@ Slike \ref{fig:rub} prikazuju detekciju za točku blizu ruba radnog prostora. Ka
 Metoda s neuronskom mrežom bila je brža opcija od osmišljanja i pisanja algoritma kalibracije za geometrijsku metodu.
 
 \section{Metoda s neuronskom mrežom}
+Čvor koji je vraćao poziciju na temelju metode s neuronskom mrežom imao je vrlo dobru preciznost u svim točkama radnog prostora. Nakon treninga na izmjerenih 39 točaka, greške unutar cijelog radnog prostora su bile ispod 2cm. Na slici \ref{fig:trening} prikazan je odziv naučene neuronske mreže na tih 39 točaka. Crveni križići predstavljaju točku koju je mreža izračunala na temelju para piksela kamera, dok su plavi krugovi stvarne pozicije na kojima je marker bio u prostoru.
 
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+	\includegraphics[width=0.95\textwidth]{trening1}
+	\caption*{}
+	\label{fig:trening_1}
+\end{subfigure}
+\begin{subfigure}[b]{.5\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{trening2}
+	\caption*{}
+	\label{fig:trening_2}
+\end{subfigure}
+\caption{Preciznost naučene neuronske mreže}
+\label{fig:trening}
+\end{figure}
+
+Dodatna testiranja bila su rađena pomoću drona. Kako bi se isprobala preciznost detekcije prilikom pomicanja drona s dva markera, simulirao se njegov let po nekoj trajektoriji tako da se dron uzeo u ruku i ručno pomicao. Simulirani manevri su započeli uzletom drona na neku visinu. Nakon toga, dron se kretao po nekoj putanji te se na kraju vratio na početnu poziciju. Tijekom kretanja po putanji, pokušavalo se da dron ne mijenja visinu.
+
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+	\includegraphics[width=0.95\textwidth]{polukrug1}
+	\caption*{}
+	\label{fig:krug_1}
+\end{subfigure}
+\begin{subfigure}[b]{.5\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{polukrug2}
+	\caption*{}
+	\label{fig:krug_2}
+\end{subfigure}
+\caption{Kretanje drona po polukrugu}
+\label{fig:krug}
+\end{figure}
+
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+	\includegraphics[width=0.95\textwidth]{kocka1}
+	\caption*{}
+	\label{fig:kocka_1}
+\end{subfigure}
+\begin{subfigure}[b]{.5\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{kocka2}
+	\caption*{}
+	\label{fig:kocka_2}
+\end{subfigure}
+\caption{Kretanje drona po kvadratu}
+\label{fig:kocka}
+\end{figure}
+
+Iz slika \ref{fig:krug} i \ref{fig:kocka} može se uočiti da je detektirana putanja drona vrlo slična putanji koju se simuliralo. Nepravilnosti u obliku kružnice i kvadrata su djelomično uzrokovane ručnim pomicanjem drona tako da stvarna preciznost nije u potpunosti poznata. Eksperiment bi se mogao poboljšati da se mjerenja rade paralelno i sa OptiTrack sustavom za koji se zna da je iznimno precizan. Tada bi se mogli usporediti odzivi i time potvrditi preciznost testiranog sustava. 
+
+Ova metoda dala je znatno bolje rezultate od geometrijske metode zbog toga što je neuronska mreža "naučila" intrinzične parametre kamere do kojih bi se moralo doći kalibracijom kod geometrijske metode. Problem naučene neuronske mreže kod rješavanja problema izračuna 3-D koordinata točke je što se ne mogu postaviti zakreti i pozicije kamera. Ukoliko dođe do promjena rotacija ili pozicija kamera, ovaj sustav neće raditi jer je istreniran na specifične uvijete.  
 
 \chapter{Zaključak}
 Zaključak.

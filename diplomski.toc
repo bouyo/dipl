@@ -22,5 +22,5 @@
 \contentsline {chapter}{\numberline {5}Rezultati}{25}{chapter.5}
 \contentsline {section}{\numberline {5.1}Geometrijska metoda}{25}{section.5.1}
 \contentsline {section}{\numberline {5.2}Metoda s neuronskom mre\IeC {\v z}om}{27}{section.5.2}
-\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{28}{chapter.6}
-\contentsline {chapter}{Literatura}{29}{chapter*.25}
+\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ak}{29}{chapter.6}
+\contentsline {chapter}{Literatura}{30}{chapter*.28}
