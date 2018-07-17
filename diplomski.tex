@@ -138,25 +138,87 @@ Za preciznu i robusnu detekciju važno je pozicionirati kamere i markere tako da
 
 Koriste se tri markera pozicionirana na vrhu letjelice. Markeri su postavljeni u formaciju trokuta sa jednim markerom ispred prednjeg kraja letjelice dok su druga dva markera iza stražnjeg kraja letjelice. Razmak između stražnjih markera je manji od razmaka između stražnjih i prednjeg kako bi se detektirala orijentacija letjelice.
 
-Obje kamere moraju detektirati sva tri markera da bi se mogla odrediti pozicija i orijentacija letjelice u globalnom koordinatnom sustavu. Kamere su postavljene na pano visine 1.88m i širine 1.25m. Pozicionirane su na rubovima panoa kako bi bile što udaljenije i pokrivale što veći radni prostor. Nagib kamera prema dolje iznosi 48$^{\circ}$ (rotacija oko x-osi kamere). Kamere su zarotirane oko njihove y-osi (lijevo-desno) za 20$^{\circ}$ jedna prema drugoj kako bi se dobio što veći radni prostor. Iz poznavanja maksimalne udaljenosti detekcije koja iznosi 3m te horizontalnog i vertikalnog vidnog kuta Wiimote kamera određuje se područje unutar kojeg će obje kamere detektirati sva tri LED markera. Rubovi zone detekcije obilježeni su ljepljivom vrpcom kako bi se dron uvijek mogao precizno postaviti za eksperimente. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{2led_side}
+\caption{Dron sa dva LED markera}
+\label{fig:2led_side}
+\end{figure} 
+
+Obje kamere moraju detektirati sva tri markera da bi se mogla odrediti pozicija i orijentacija letjelice u globalnom koordinatnom sustavu. Kamere su postavljene na pano visine 1.88m i širine 1.25m. Pozicionirane su na rubovima panoa kako bi bile što udaljenije i pokrivale što veći radni prostor. Nagib kamera prema dolje iznosi 48$^{\circ}$ (rotacija oko x-osi kamere). Kamere su zarotirane oko njihove y-osi (lijevo-desno) za 20$^{\circ}$ jedna prema drugoj kako bi se dobio što veći radni prostor. Iz poznavanja maksimalne udaljenosti detekcije koja iznosi 3m te horizontalnog i vertikalnog vidnog kuta Wiimote kamera određuje se područje unutar kojeg će obje kamere detektirati sva tri LED markera. Rubovi zone detekcije obilježeni su ljepljivom vrpcom kako bi se dron uvijek mogao precizno postaviti za eksperimente.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{kamere}
+\caption{Pano sa postavljenim kamerama}
+\label{fig:kamere_pano}
+\end{figure} 
 
 \subsection{Nosač za Wiimote}
 Potrebno je napraviti nosač za Wiimote kamere kako bi se dobila precizna orijentacija kamera i čvrsta veza sa objektom na kojem će kamera biti postavljena (pano). Nosač za kameru mora imati mogućnost zakreta kamere oko dvije osi, osi x i y (gore-dolje, lijevo-desno). Iz izmjerenih dimenzija Wiimotea i segmenta panoa na koji će se nosač pričvrstiti, napravljen je model modularnog nosač u Solidworksu i isprintan pomoću 3D printera. Nosač se sastoji od 3 dijela:
 
 \begin{enumerate}
-	\item Držač Wiimotea
+	\item Wiimote držač
 	\item Učvršćivač za pano
 	\item Segment za vezu između fiksiranih dijelova 
 \end{enumerate}
+
+\begin{figure}[h]
+\begin{subfigure}[b]{.3\textwidth}
+\centering
+	\includegraphics[width=0.9\textwidth]{wii}
+	\caption{Wiimote držač}
+	\label{fig:drzac}
+\end{subfigure}
+\begin{subfigure}[b]{.3\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{platno}
+	\caption{Učvršćivač za pano}
+	\label{fig:ucvrscivac}
+\end{subfigure}
+\begin{subfigure}[b]{.3\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{drzac}
+	\caption{Segment za vezu}
+	\label{fig:veza}
+\end{subfigure}
+\caption{Modeli elemenata modularnog nosača}
+\label{fig:elementi}
+\end{figure}
 
 Veza između držača Wiimotea i segmenta za vezu ostvarena je preko ploha koje sjedaju jedne između drugih. Dok su plohe poravnate još postoji mjesta za micanje pa je moguće postaviti željenu rotaciju Wiimotea oko x-osi (gore-dolje). Kada je postavljeni željeni kut rotacije, umetanjem M3 vijka kroz rupu u plohama i njegovim zatezanjem pomoću matice učvršćuje se veza i osigurava željena rotacija.
 
 Veza između dijela učvršćenog na pano i segmenta za povezivanje ostvarena je preko cilindra na koji se postavlja segment za povezivanje. Segment za povezivanje se može slobodno rotirati oko vertikalne osi (lijevo-desno). Kad se postavi željeni zakret Wiimotea, veza se učvršćuje pomoću M3 matice i vijka. 
 
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+	\includegraphics[width=0.6\textwidth]{mehanizam}
+	\caption{Spojeni Solidworks model}
+	\label{fig:mehanizam1}
+\end{subfigure}
+\begin{subfigure}[b]{.5\textwidth}
+	\centering
+	\includegraphics[width=0.6\textwidth]{print}
+	\caption{Isprintani model}
+	\label{fig:mehanizam2}
+\end{subfigure}
+\caption{Modularni Wiimote nosač}
+\label{fig:mehanizam}
+\end{figure}
+
 \subsection{Radni prostor}
 Iz pozicija i orijentacija kamera, poznatog vidnog kuta i maksimalne udaljenosti na kojoj Wiimoteovi detektiraju infracrveni LED marker računa se prostor unutar kojeg je kamera u mogućnosti detektirati marker. Taj postupak se radi za obje kamere. Presjek prostora detekcije prve i druge kamere je radni prostor. Ako dron ostane unutar tog prostora njegova pozicija i orijentacija će biti dobivene iz sustava globalne vizije pa je važno postaviti ograničenja radnog prostora u algoritme upravljanja dronom kako on ne bi izašao tog prostora.
 
-Zbog ručnog postavljanja zakreta kamera koje unosi greške od nekoliko stupnjeva i loše detekcije markera na rubnim dijelovima vidnog polja kamera, određivanje rubova radnog prostora izvršeno je eksperimentalno.  
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{radni_prostor}
+\caption{Označen radni prostor}
+\label{fig:radni}
+\end{figure} 
+
+Zbog ručnog postavljanja zakreta kamera koje unosi greške od nekoliko stupnjeva i loše detekcije markera na rubnim dijelovima vidnog polja kamera, određivanje rubova radnog prostora izvršeno je eksperimentalno.
+
 
 \chapter{Komunikacija}
 Oba Wiimotea se povezuju bežično preko Bluetooth veze sa osobnim računalom. Računalo mora na neki način dohvatiti bitne informacije iz kamera, iz njih izračunati poziciju i orijentaciju drona u prostoru te na kraju objaviti izračunate vrijednosti kako bi se one mogle dohvatiti od strane upravljačkog algoritma. Za preciznu detekciju i pouzdano upravljanje važno je da su mjerenja kamera sinkronizirana te da je poznata frekvencija izračuna i objave pozicije drona. Frekvencija kojom Wiimote šalje podatke iznosi 100Hz. Za upravljanje po poziciji takva brzina je nepotrebna pa će se uzimati podaci frekvencijom od 20Hz. Robotski operacijski sustav će se koristiti za uspostavu komunikacije jer zadovoljava sve uvjete i omogućuje precizno i brzo izvršavanje više Python ili C++ skripti za dohvat, obradu i objavu informacija.
@@ -482,7 +544,14 @@ Neuronska mreža koja će se koristiti za izračun pozicije ima četiri ulaza i 
 
 Kako bi se proveo algoritam učenja mreže temeljen na pogrešci, moraju se snimiti kombinacije ulaza i izlaza sustava. Za snimanje točaka, prvo se okvirno na podu označio rub radnog prostora. Onda su naznačene neke točke po podu unutar radnog prostora. Ukupno je 13  označenih točaka. Izmjerene su x i y koordinate označenih točaka u odnosu na globalni koordinatni sustav. Za hvatanje piksela kamera, napisana je skripta koja na pritisak tipke na tipkovnici učitava aktivne piksele s Wiimoteova i sprema ih u .csv datoteku. Slikanjem infracrvenog markera postavljenog na označene točke, saznaje se koja kombinacija piksela odgovara kojoj koordinati markera u prostoru. Marker je bio postavljen na visinama od 0cm, 15cm i 30cm nad označenim točkama, što daje ukupno 39 mjerenja i ulazno-izlaznih kombinacija. Za trening mreže koristi se MATLAB Neural Network Toolbox.
 
-\textit{MATLAB Neural Network Toolbox} je alat unutar programa MATLAB koji sadrži algoritme, već istrenirane modele i aplikacije za stvaranje, treniranje, vizualizaciju i simulaciju jednostavnih i dubokih neuronskih mreža. Ovaj alat, zbog svoje jednostavnosti, ubrzava proces treniranja i testiranja neuronske mreže koja će dobro preslikavati piksele kamera u točku u prostoru. Potrebno je samo stvoriti matrice u MATLAB-u koje odgovaraju ulazima i izlazima iz sustava, pokrenuti aplikaciju upisom naredbe \textit{nnstart} i odabrati kakva nam neuronska mreža treba. Nakon treninga može se vidjeti preciznost mreže pa se može opet trenirati mreža sa promijenjenim parametrima kako bi se što više poboljšala preciznost. Unaprijedna mreža s jednim skrivenim slojem veličine 8 neurona dala je vrlo dobre rezultate te će se ona koristiti za određivanje pozicije markera.  
+\textit{MATLAB Neural Network Toolbox} je alat unutar programa MATLAB koji sadrži algoritme, već istrenirane modele i aplikacije za stvaranje, treniranje, vizualizaciju i simulaciju jednostavnih i dubokih neuronskih mreža. Ovaj alat, zbog svoje jednostavnosti, ubrzava proces treniranja i testiranja neuronske mreže koja će dobro preslikavati piksele kamera u točku u prostoru. Potrebno je samo stvoriti matrice u MATLAB-u koje odgovaraju ulazima i izlazima iz sustava, pokrenuti aplikaciju upisom naredbe \textit{nnstart} i odabrati kakva nam neuronska mreža treba. Nakon treninga može se vidjeti preciznost mreže pa se može opet trenirati mreža sa promijenjenim parametrima kako bi se što više poboljšala preciznost. Unaprijedna mreža s jednim skrivenim slojem veličine 8 neurona dala je vrlo dobre rezultate te će se ona koristiti za određivanje pozicije markera (Slika \ref{fig:mreza8}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{mreza}
+\caption{Neuronska mreža korištena u MATLAB-u}
+\label{fig:mreza8}
+\end{figure} 
 
 Istrenirana neuronska mreža dobivena u MATLAB-u implementirana je u programskom jeziku Python kako bi se mogla koristiti u ROS čvoru. Čvor koji koristi neuronsku mrežu pokreće se skriptom \textit{wii\textunderscore neural.py}. Problem kod ovog algoritma je kako upariti piksele prve i druge kamere ako je detektirano više markera. Wiimote vraća listu detektiranih piksela tako da je na prvom mjestu liste infracrveni marker najvećeg intenziteta. Ovaj problem je riješen postavljanjem dva infracrvena markera na dron, jedan naprijed, drugi iza, i održavanjem \textit{yaw} kuta drona da dron uvijek bude okrenut prema panou s kamerama. Ako dron ostane u tom položaju, znamo da prvi piksel liste odgovara prednjem markeru, a drugi piksel stražnjem. Čvor objavljuje poziciju i orijentaciju drona na temu \textit{drone\textunderscore position} kao što radi čvor za geometrijski postupak.
 
