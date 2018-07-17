@@ -1,32 +1,34 @@
 \select@language {croatian}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces OptiTrack postav za pra\IeC {\'c}enje pokreta i animaciju \footnotemark [1]\relax }}{2}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces OptiTrack Prime 41 kamera \footnotemark [1]\relax }}{2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Prikaz infracrvenog zra\IeC {\v c}enja na spektru elektromagnetskih zra\IeC {\v c}enja \footnotemark \relax }}{3}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Testirane infracrvene kamere\relax }}{4}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Infracrveni SMD LED modul \footnotemark \relax }}{5}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Okrugli OptiTrack markeri postavljeni na dronu \footnotemark \relax }}{6}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Odbijanje svjetlosti od retroreflektiraju\IeC {\'c}e prizme \footnotemark \relax }}{6}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Demonstracija osvjetljenja reflektiraju\IeC {\'c}eg prsluka \footnotemark \relax }}{7}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Dron sa dva LED markera\relax }}{8}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Pano sa postavljenim kamerama\relax }}{8}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Modeli elemenata modularnog nosa\IeC {\v c}a\relax }}{9}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Modularni Wiimote nosa\IeC {\v c}\relax }}{10}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Ozna\IeC {\v c}en radni prostor\relax }}{10}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Prikaz infracrvenog zra\IeC {\v c}enja na spektru elektromagnetskih zra\IeC {\v c}enja \footnotemark \relax }}{4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Testirane infracrvene kamere\relax }}{5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Infracrveni SMD LED modul \footnotemark \relax }}{6}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Okrugli OptiTrack markeri postavljeni na dronu \footnotemark \relax }}{7}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Odbijanje svjetlosti od retroreflektiraju\IeC {\'c}e prizme \footnotemark \relax }}{7}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Demonstracija osvjetljenja reflektiraju\IeC {\'c}eg prsluka \footnotemark \relax }}{8}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Dron sa dva LED markera\relax }}{9}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Pano sa postavljenim kamerama\relax }}{9}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Modeli elemenata modularnog nosa\IeC {\v c}a\relax }}{10}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Modularni Wiimote nosa\IeC {\v c}\relax }}{11}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Ozna\IeC {\v c}en radni prostor\relax }}{11}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces ROS Kinetic Kame logo \footnotemark \relax }}{11}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Pojednostavljeni prikaz komunikacijske strukture ROS-a \footnotemark \relax }}{12}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces ROS Kinetic Kame logo \footnotemark \relax }}{12}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Pojednostavljeni prikaz komunikacijske strukture ROS-a \footnotemark \relax }}{13}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Projekcija markera na Wiimoteove \footnotemark \relax }}{14}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Projekcija to\IeC {\v c}ke na slikovnu ravninu u \textit {pinhole} kameri\relax }}{15}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Prikaz pravaca $l_1$ i $l_2$ te najbli\IeC {\v z}ih to\IeC {\v c}aka $x_1$ i $x_2$ \footnotemark \relax }}{18}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Model biolo\IeC {\v s}kog neurona \footnotemark [1]\relax }}{21}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Model perceptrona \footnotemark [1]\relax }}{21}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Neuronska mre\IeC {\v z}a kori\IeC {\v s}tena u MATLAB-u\relax }}{23}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Projekcija markera na Wiimoteove \footnotemark \relax }}{15}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Projekcija to\IeC {\v c}ke na slikovnu ravninu u \textit {pinhole} kameri\relax }}{16}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Prikaz pravaca $l_1$ i $l_2$ te najbli\IeC {\v z}ih to\IeC {\v c}aka $x_1$ i $x_2$ \footnotemark \relax }}{19}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Model biolo\IeC {\v s}kog neurona \footnotemark [10]\relax }}{22}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Model perceptrona \footnotemark [10]\relax }}{22}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Neuronska mre\IeC {\v z}a kori\IeC {\v s}tena u MATLAB-u\relax }}{24}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Pravci, izra\IeC {\v c}unate to\IeC {\v c}ke i stvarna to\IeC {\v c}ka za centralnu to\IeC {\v c}ku\relax }}{25}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Pravci, izra\IeC {\v c}unate to\IeC {\v c}ke i stvarna to\IeC {\v c}ka za to\IeC {\v c}ku u blizini centralne\relax }}{26}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Pravci, izra\IeC {\v c}unate to\IeC {\v c}ke i stvarna to\IeC {\v c}ka za rubnu to\IeC {\v c}ku\relax }}{26}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Preciznost nau\IeC {\v c}ene neuronske mre\IeC {\v z}e\relax }}{27}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Kretanje drona po polukrugu\relax }}{28}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Kretanje drona po kvadratu\relax }}{28}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Pravci, izra\IeC {\v c}unate to\IeC {\v c}ke i stvarna to\IeC {\v c}ka za centralnu to\IeC {\v c}ku\relax }}{26}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Pravci, izra\IeC {\v c}unate to\IeC {\v c}ke i stvarna to\IeC {\v c}ka za to\IeC {\v c}ku u blizini centralne\relax }}{27}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pravci, izra\IeC {\v c}unate to\IeC {\v c}ke i stvarna to\IeC {\v c}ka za rubnu to\IeC {\v c}ku\relax }}{27}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Preciznost nau\IeC {\v c}ene neuronske mre\IeC {\v z}e\relax }}{28}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Kretanje drona po polukrugu\relax }}{29}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Kretanje drona po kvadratu\relax }}{29}
 \addvspace {10\p@ }

@@ -25,7 +25,17 @@
 \includepdf[pages=-]{img/izvornik.pdf}
 
 % Dodavanje zahvale ili prazne stranice. Ako ne želite dodati zahvalu, naredbu ostavite radi prazne stranice.
-\zahvala{Svim ljudima dobre volje}
+\zahvala{Želio bih zahvaliti svom mentoru izv. prof. dr. sc. Jadranku Matušku na pomoći, savjetima i opremi bez kojih ovaj i drugi radovi tijekom fakultetskog obrazovanja ne bi bili mogući.
+
+Zahvaljujem doc. dr. sc. Šandoru Ilešu na pomoći i savjetima pri realizaciji brojnih projekata. \\
+
+Također želim zahvaliti kolegi Luki Galoviću koji je sudjelovao u izradi ovog rada i čiji diplomski rad pokriva upravljački dio vezan uz ovaj rad.
+
+Zahvaljujem kolegama Ivanu Ćaćiću i Marku Švecu na pomoći pri izradi rada.\\
+
+Za kraj, želio bih zahvaliti svojoj obitelji bez kojih ovo ne bi bilo moguće, na potpori, razumijevanju i financiranju svih ovih godina. \\
+
+Hvala!}
 
 \tableofcontents
 
@@ -34,7 +44,31 @@
 \chapter{Uvod}
 U mnogim granama industrije veliki značaj ima praćenje kretanja. Praćenje pokreta koristi se kod animacija za filmsku industriju i industriju video igara. Koristi se u vojnoj industriji za simulatore i u znanstvene svrhe za proučavanje kretanja ljudi i životinja. Zbog napretka robotike u posljednjih nekoliko godina, sve je veća potreba za preciznim praćenjem dronova i drugih robota s ciljem poboljšanja i razvoja algoritama autonomnog upravljanja.
 
-Trenutna rješenja praćenja pokreta poput OptiTrack-a omogućuju iznimno precizno praćenje, ali vrlo su skupa. Cijene se kreću od nekoliko tisuća dolara do nekoliko desetaka tisuća dolara što nije prikladno za male firme, pojedince ili projekte za koje nije potrebna tolika preciznost. 
+Trenutna rješenja praćenja pokreta poput OptiTrack-a omogućuju iznimno precizno praćenje, ali vrlo su skupa. Cijene se kreću od nekoliko tisuća dolara do nekoliko desetaka tisuća dolara što nije prikladno za male firme, pojedince ili projekte za koje nije potrebna tolika preciznost. Većina postojećih rješenja za praćenje pokreta bazira se na infracrvenim kamerama s infracrvenim diodama koje osvjetljavaju reflektirajuće okrugle markere. Kamere tada detektiraju markere i izračunava se pozicija markera u prostoru.
+
+Cilj rada je razvoj ekonomski prihvatljivog sustava globalne vizije koji će biti namijenjen za detekciju dronova u prostoru kako bi se mogli testirati razni algoritmi upravljanja njima. Sustav mora moći pouzdano i precizno izračunati poziciju i orijentaciju drona. Informacije o poziciji i orijentaciji drona moraju biti dohvatljive od strane upravljačkog algoritma kako bi se mogla zatvoriti upravljačka petlja i izvršavati upravljanje.     
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{optitrack}
+\caption{OptiTrack postav za praćenje pokreta i animaciju \protect\footnotemark[1]}
+\end{figure}
+
+\begin{figure}[h]
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+\includegraphics[width=0.9\textwidth]{prime41}
+\caption*{}
+\end{subfigure}
+\begin{subfigure}[b]{.5\textwidth}
+\centering
+\includegraphics[width=0.9\textwidth]{prime41-side}
+\caption*{}
+\end{subfigure}
+\caption{OptiTrack Prime 41 kamera \protect\footnotemark[1]}
+\end{figure}
+
+\footnotetext[1]{http://optitrack.com/products/prime-41/}
 
 \chapter{Postav}
 Za 3D lokalizaciju bespilotne letjelice potrebne su minimalno dvije kamere. Pomoću dvije kamere i markera koje te kamere mogu detektirati moguće je dobiti lokaciju tog markera odnosno x-y-z koordinate markera u globalnom koordinatnom sustavu. Kod upravljanja letjelicom važno je poznavati i orijentaciju letjelice (yaw). 
@@ -501,7 +535,7 @@ Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja biološ
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{bio_neuron}
-\caption{Model biološkog neurona \protect\footnotemark[1]}
+\caption{Model biološkog neurona \protect\footnotemark[10]}
 \label{fig:bio-neuron}
 \end{figure}
 
@@ -510,10 +544,10 @@ Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja biološ
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{neuron}
-\caption{Model perceptrona \protect\footnotemark[1]}
+\caption{Model perceptrona \protect\footnotemark[10]}
 \label{fig:neuron}
 \end{figure}
-\footnotetext[1]{Izvor: \citep{ISU}}
+\footnotetext[10]{Izvor: \citep{ISU}}
 
 U radu će se koristiti statički model neurona. Njegov izlaz ovisi isključivo o trenutnim vrijednostima ulaznih signala i težinskim koeficijentima. Matematički se može opisati sljedećim izrazima:
 
@@ -694,6 +728,8 @@ Cilj projekta, koji je bio razvoj jeftinog sustava globalne vizije za testiranje
 Kako bi se ovaj postav mogao u praksi iskoristit za testiranje upravljanja dronova, potrebne su brojne izmjene. Wiimote kamere imaju iznimno usko vidno polje, što u ovom postavu rezultira malih radnim prostorom koji nije prikladan za testiranje dronova. Ovaj problem bi se mogao riješiti korištenjem kamera šireg vidnog polja ili postavljanjem više Wiimoteova čime bi se postiglo povećanje radnog prostora. Problem predstavljaju i markeri. LED izvori kao markeri troše bateriju drona nepotrebno i ne mogu se detektirati iz svih kuteva. Puno bolja opcija je postavljanje infracrvenog osvjetljenja kod kamere i stavljanje reflektirajućih okruglih markera. Za osvjetljenje je važno da ima dovoljnu snagu kako bi na željenoj udaljenosti marker bio detektiran. Zadnji problem predstavlja korištenje neuronske mreže koja nije fleksibilna. Bolje riješenje je korištenje geometrijske metode uz kalibraciju. Praktično riješenje bi bilo da se kamere ne moraju precizno postavljati, već da se tijekom kalibracije riješi i njihova pozicija u prostoru (postavljanjem objekta za kalibraciju u željeno ishodište globalnog koordinatnog sustava).
 
 Navedeni nedostaci umanjuju iskoristivost trenutnog sustava, ali su rješenja tih nedostataka poznata pa smatram da bi se sustav mogao poboljšati da postane iskoristiv za dronove, ali i da ostane ekonomski prihvatljiv.
+\vfill
+\hspace*{0pt}\hfill Potpis: $\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_$
 
 \bibliographystyle{fer}
 \bibliography{literatura}

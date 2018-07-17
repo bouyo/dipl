@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.6.11)  17 JUL 2018 11:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.6.11)  17 JUL 2018 12:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -805,368 +805,411 @@ File: img/izvornik.pdf Graphic file (type pdf)
 <use img/izvornik.pdf, page 1>
 Package pdftex.def Info: img/izvornik.pdf, page1 used on input line 25.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
- [1 <./img/izvornik.pdf>] [3] (./diplomski.toc
+ [1 <./img/izvornik.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+
+ []
+
+[3] (./diplomski.toc
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
-
-[4
+ [4
 
 ])
 \tf@toc=\write3
 \openout3 = `diplomski.toc'.
 
- [5] (./diplomski.lof)
+ [5] (./diplomski.lof [6
+
+])
 \tf@lof=\write4
 \openout4 = `diplomski.lof'.
 
- [6
-
-]
+ [7]
 Poglavlje 1.
+<./img/optitrack.jpg, id=39, 1405.25pt x 1003.75pt>
+File: ./img/optitrack.jpg Graphic file (type jpg)
+ <use ./img/optitrack.jpg>
+Package pdftex.def Info: ./img/optitrack.jpg used on input line 53.
+(pdftex.def)             Requested size: 330.05322pt x 235.74344pt.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 54.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./img/prime41.png, id=40, 728.7225pt x 376.40625pt>
+File: ./img/prime41.png Graphic file (type png)
+ <use ./img/prime41.png>
+Package pdftex.def Info: ./img/prime41.png used on input line 60.
+(pdftex.def)             Requested size: 185.65297pt x 95.8933pt.
+
+<./img/prime41-side.jpg, id=42, 1405.25pt x 1003.75pt>
+File: ./img/prime41-side.jpg Graphic file (type jpg)
+
+<use ./img/prime41-side.jpg>
+Package pdftex.def Info: ./img/prime41-side.jpg used on input line 65.
+(pdftex.def)             Requested size: 185.65297pt x 132.60568pt.
+
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 58--68
+[][] [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [1
 
-]
+] [2 <./img/optitrack.jpg> <./img/prime41.png> <./img/prime41-side.jpg>]
 Poglavlje 2.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 44.
-[2
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 78.
+[3
 
-] <./img/infrared.jpg, id=42, 880.28876pt x 591.20876pt>
+] <./img/infrared.jpg, id=53, 880.28876pt x 591.20876pt>
 File: ./img/infrared.jpg Graphic file (type jpg)
 
 <use ./img/infrared.jpg>
-Package pdftex.def Info: ./img/infrared.jpg used on input line 57.
+Package pdftex.def Info: ./img/infrared.jpg used on input line 91.
 (pdftex.def)             Requested size: 288.79422pt x 193.95381pt.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 58.
 
-Overfull \hbox (1.84709pt too wide) in paragraph at lines 69--71
+Overfull \hbox (1.84709pt too wide) in paragraph at lines 103--105
 []\T1/ptm/m/n/12 Rezolucija ka-mere ¢e utje-cati na pre-ciz-nost iz-ra-£una 3D 
 glo-bal-nih ko-or-di-nata to£ke.
  []
 
-[3 <./img/infrared.jpg>]
-<./img/Nintendo-Wiimote.jpg, id=47, 501.875pt x 501.875pt>
+[4 <./img/infrared.jpg>]
+<./img/Nintendo-Wiimote.jpg, id=58, 501.875pt x 501.875pt>
 File: ./img/Nintendo-Wiimote.jpg Graphic file (type jpg)
 
 <use ./img/Nintendo-Wiimote.jpg>
-Package pdftex.def Info: ./img/Nintendo-Wiimote.jpg used on input line 77.
+Package pdftex.def Info: ./img/Nintendo-Wiimote.jpg used on input line 111.
 (pdftex.def)             Requested size: 165.02661pt x 165.02959pt.
 
-<./img/pixy.jpg, id=48, 652.4375pt x 721.69624pt>
+<./img/pixy.jpg, id=59, 652.4375pt x 721.69624pt>
 File: ./img/pixy.jpg Graphic file (type jpg)
  <use ./img/pixy.jpg>
-Package pdftex.def Info: ./img/pixy.jpg used on input line 83.
+Package pdftex.def Info: ./img/pixy.jpg used on input line 117.
 (pdftex.def)             Requested size: 132.01927pt x 146.03256pt.
- [4 <./img/Nintendo-Wiimote.jpg> <./img/pixy.jpg>]
-<./img/infrared_led.jpg, id=52, 401.5pt x 401.5pt>
+ [5 <./img/Nintendo-Wiimote.jpg> <./img/pixy.jpg>]
+<./img/infrared_led.jpg, id=63, 401.5pt x 401.5pt>
 File: ./img/infrared_led.jpg Graphic file (type jpg)
 
 <use ./img/infrared_led.jpg>
-Package pdftex.def Info: ./img/infrared_led.jpg used on input line 100.
+Package pdftex.def Info: ./img/infrared_led.jpg used on input line 134.
 (pdftex.def)             Requested size: 165.02347pt x 165.02652pt.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 104.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 138.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 104--104
+Underfull \hbox (badness 10000) in paragraph at lines 138--138
 [][]$\T1/pcr/m/n/10 http : / / www . ledlightmake . com / high-[]power-[]led-[]
 modules-[]c-[]70 _ 71 /
  []
 
-[5 <./img/infrared_led.jpg>]
-<./img/markers_dron.jpg, id=57, 1027.84pt x 730.73pt>
+[6 <./img/infrared_led.jpg>]
+<./img/markers_dron.jpg, id=69, 1027.84pt x 730.73pt>
 File: ./img/markers_dron.jpg Graphic file (type jpg)
 
 <use ./img/markers_dron.jpg>
-Package pdftex.def Info: ./img/markers_dron.jpg used on input line 111.
+Package pdftex.def Info: ./img/markers_dron.jpg used on input line 145.
 (pdftex.def)             Requested size: 206.28249pt x 146.64516pt.
 
-<./img/retroreflector.jpg, id=58, 469.755pt x 350.30875pt>
+<./img/retroreflector.jpg, id=70, 469.755pt x 350.30875pt>
 File: ./img/retroreflector.jpg Graphic file (type jpg)
 
 <use ./img/retroreflector.jpg>
-Package pdftex.def Info: ./img/retroreflector.jpg used on input line 121.
+Package pdftex.def Info: ./img/retroreflector.jpg used on input line 155.
 (pdftex.def)             Requested size: 165.02347pt x 123.0589pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
+Underfull \hbox (badness 10000) in paragraph at lines 159--159
 [][]\T1/ptm/m/n/10 https://www.core77.com/posts/24028/A-Scintillating-Retrorefl
 ective-City-Cycle-by-Bike-Safe-
  []
 
-<./img/retroreflective_vest.jpg, id=59, 1027.84pt x 503.8825pt>
+<./img/retroreflective_vest.jpg, id=71, 1027.84pt x 503.8825pt>
 File: ./img/retroreflective_vest.jpg Graphic file (type jpg)
 
 <use ./img/retroreflective_vest.jpg>
-Package pdftex.def Info: ./img/retroreflective_vest.jpg used on input line 129.
+Package pdftex.def Info: ./img/retroreflective_vest.jpg used on input line 163.
 
 (pdftex.def)             Requested size: 371.30595pt x 182.02803pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6 <./img/markers_dron.jpg> <./img/retroreflector.jpg>]
-<./img/2led_side.png, id=63, 900.36375pt x 498.86375pt>
+[7 <./img/markers_dron.jpg> <./img/retroreflector.jpg>]
+<./img/2led_side.png, id=75, 900.36375pt x 498.86375pt>
 File: ./img/2led_side.png Graphic file (type png)
 
 <use ./img/2led_side.png>
-Package pdftex.def Info: ./img/2led_side.png used on input line 144.
+Package pdftex.def Info: ./img/2led_side.png used on input line 178.
 (pdftex.def)             Requested size: 288.79422pt x 160.01265pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <./img/retroreflective_vest.jpg>]
-<./img/kamere.jpg, id=68, 544.0325pt x 361.35pt>
+[8 <./img/retroreflective_vest.jpg>]
+<./img/kamere.jpg, id=79, 544.0325pt x 361.35pt>
 File: ./img/kamere.jpg Graphic file (type jpg)
  <use ./img/kamere.jpg>
-Package pdftex.def Info: ./img/kamere.jpg used on input line 153.
+Package pdftex.def Info: ./img/kamere.jpg used on input line 187.
 (pdftex.def)             Requested size: 288.79422pt x 191.82887pt.
 
-[8 <./img/2led_side.png> <./img/kamere.jpg>]
-<./img/wii.png, id=72, 324.46219pt x 338.76563pt>
+[9 <./img/2led_side.png> <./img/kamere.jpg>]
+<./img/wii.png, id=83, 324.46219pt x 338.76563pt>
 File: ./img/wii.png Graphic file (type png)
  <use ./img/wii.png>
-Package pdftex.def Info: ./img/wii.png used on input line 170.
+Package pdftex.def Info: ./img/wii.png used on input line 204.
 (pdftex.def)             Requested size: 111.3929pt x 116.30048pt.
 
-<./img/platno.png, id=73, 258.21469pt x 190.46156pt>
+<./img/platno.png, id=84, 258.21469pt x 190.46156pt>
 File: ./img/platno.png Graphic file (type png)
  <use ./img/platno.png>
-Package pdftex.def Info: ./img/platno.png used on input line 176.
+Package pdftex.def Info: ./img/platno.png used on input line 210.
 (pdftex.def)             Requested size: 111.3929pt x 82.16423pt.
 
-<./img/drzac.png, id=74, 282.30469pt x 272.51813pt>
+<./img/drzac.png, id=85, 282.30469pt x 272.51813pt>
 File: ./img/drzac.png Graphic file (type png)
  <use ./img/drzac.png>
-Package pdftex.def Info: ./img/drzac.png used on input line 182.
+Package pdftex.def Info: ./img/drzac.png used on input line 216.
 (pdftex.def)             Requested size: 111.3929pt x 107.53328pt.
 
-<./img/mehanizam.png, id=75, 325.215pt x 433.62pt>
+<./img/mehanizam.png, id=86, 325.215pt x 433.62pt>
 File: ./img/mehanizam.png Graphic file (type png)
  <use ./img/mehanizam.png>
-Package pdftex.def Info: ./img/mehanizam.png used on input line 197.
+Package pdftex.def Info: ./img/mehanizam.png used on input line 231.
 (pdftex.def)             Requested size: 123.77074pt x 165.02873pt.
 
-<./img/print.jpg, id=76, 370.38374pt x 376.40625pt>
+<./img/print.jpg, id=87, 370.38374pt x 376.40625pt>
 File: ./img/print.jpg Graphic file (type jpg)
  <use ./img/print.jpg>
-Package pdftex.def Info: ./img/print.jpg used on input line 203.
+Package pdftex.def Info: ./img/print.jpg used on input line 237.
 (pdftex.def)             Requested size: 123.77074pt x 125.78241pt.
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 195--207
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 229--241
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/radni_prostor.jpg, id=77, 1138.2525pt x 570.13pt>
+<./img/radni_prostor.jpg, id=88, 1138.2525pt x 570.13pt>
 File: ./img/radni_prostor.jpg Graphic file (type jpg)
 
 <use ./img/radni_prostor.jpg>
-Package pdftex.def Info: ./img/radni_prostor.jpg used on input line 216.
+Package pdftex.def Info: ./img/radni_prostor.jpg used on input line 250.
 (pdftex.def)             Requested size: 288.79422pt x 144.65482pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9 <./img/wii.png> <./img/platno.png> <./img/drzac.png>] [10 <./img/mehanizam.p
-ng> <./img/print.jpg> <./img/radni_prostor.jpg>]
+[10 <./img/wii.png> <./img/platno.png> <./img/drzac.png>] [11 <./img/mehanizam.
+png> <./img/print.jpg> <./img/radni_prostor.jpg>]
 Poglavlje 3.
-<./img/ros_kinetic.png, id=84, 2525.435pt x 2091.815pt>
+<./img/ros_kinetic.png, id=95, 2525.435pt x 2091.815pt>
 File: ./img/ros_kinetic.png Graphic file (type png)
 
 <use ./img/ros_kinetic.png>
-Package pdftex.def Info: ./img/ros_kinetic.png used on input line 230.
+Package pdftex.def Info: ./img/ros_kinetic.png used on input line 264.
 (pdftex.def)             Requested size: 185.65297pt x 153.75134pt.
- [11
+ [12
 
  <./img/ros_kinetic.png>]
-Overfull \hbox (2.7121pt too wide) in paragraph at lines 238--239
+Overfull \hbox (2.7121pt too wide) in paragraph at lines 272--273
 []\T1/ptm/m/n/12 ROS nam u ovom pro-jektu olak-²ava ko-mu-ni-ka-ciju iz-mežu ne
 -za-vis-nih Pyt-hon skripti
  []
 
-<./img/ros_struktura.jpg, id=90, 338.01282pt x 185.94469pt>
+<./img/ros_struktura.jpg, id=101, 338.01282pt x 185.94469pt>
 File: ./img/ros_struktura.jpg Graphic file (type jpg)
 
 <use ./img/ros_struktura.jpg>
-Package pdftex.def Info: ./img/ros_struktura.jpg used on input line 246.
+Package pdftex.def Info: ./img/ros_struktura.jpg used on input line 280.
 (pdftex.def)             Requested size: 288.79422pt x 158.87369pt.
- [12 <./img/ros_struktura.jpg>] [13]
+ [13 <./img/ros_struktura.jpg>] [14]
 Poglavlje 4.
-<./img/wiimote2_rays.png, id=98, 642.4pt x 540.0175pt>
+<./img/wiimote2_rays.png, id=108, 642.4pt x 540.0175pt>
 File: ./img/wiimote2_rays.png Graphic file (type png)
 
 <use ./img/wiimote2_rays.png>
-Package pdftex.def Info: ./img/wiimote2_rays.png used on input line 266.
+Package pdftex.def Info: ./img/wiimote2_rays.png used on input line 300.
 (pdftex.def)             Requested size: 247.54149pt x 208.08453pt.
- [14
+ [15
 
  <./img/wiimote2_rays.png>]
-<./img/projekcija.png, id=103, 1170.3725pt x 503.8825pt>
+<./img/projekcija.png, id=113, 1170.3725pt x 503.8825pt>
 File: ./img/projekcija.png Graphic file (type png)
 
 <use ./img/projekcija.png>
-Package pdftex.def Info: ./img/projekcija.png used on input line 280.
+Package pdftex.def Info: ./img/projekcija.png used on input line 314.
 (pdftex.def)             Requested size: 371.30595pt x 159.86174pt.
- [15 <./img/projekcija.png>]
-Overfull \hbox (28.41977pt too wide) in paragraph at lines 321--322
+ [16 <./img/projekcija.png>]
+Overfull \hbox (28.41977pt too wide) in paragraph at lines 355--356
 \T1/ptm/m/n/12 mak-si-mal-nog ver-ti-kal-nog i ho-ri-zon-tal-nog kuta pravca ko
 je iz-nose $\OML/cmm/m/it/12 [] \OT1/cmr/m/n/12 = 21\OML/cmm/m/it/12 :\OT1/cmr
 /m/n/12 8[] [] \OML/cmm/m/it/12 ^^L[] \OT1/cmr/m/n/12 =
  []
 
-[16] [17] <./img/skew-lines.png, id=116, 307.1475pt x 262.9825pt>
+[17] [18] <./img/skew-lines.png, id=127, 307.1475pt x 262.9825pt>
 File: ./img/skew-lines.png Graphic file (type png)
 
 <use ./img/skew-lines.png>
-Package pdftex.def Info: ./img/skew-lines.png used on input line 413.
+Package pdftex.def Info: ./img/skew-lines.png used on input line 447.
 (pdftex.def)             Requested size: 206.28249pt x 176.6227pt.
- [18 <./img/skew-lines.png>] [19] [20]
-<./img/bio_neuron.png, id=132, 714.67pt x 275.0275pt>
+ [19 <./img/skew-lines.png>] [20] [21]
+<./img/bio_neuron.png, id=142, 714.67pt x 275.0275pt>
 File: ./img/bio_neuron.png Graphic file (type png)
 
 <use ./img/bio_neuron.png>
-Package pdftex.def Info: ./img/bio_neuron.png used on input line 503.
+Package pdftex.def Info: ./img/bio_neuron.png used on input line 537.
 (pdftex.def)             Requested size: 371.30595pt x 142.88922pt.
- <./img/neuron.png, id=133, 672.5125pt x 325.215pt>
+ <./img/neuron.png, id=143, 672.5125pt x 325.215pt>
 File: ./img/neuron.png Graphic file (type png)
 
 <use ./img/neuron.png>
-Package pdftex.def Info: ./img/neuron.png used on input line 512.
+Package pdftex.def Info: ./img/neuron.png used on input line 546.
 (pdftex.def)             Requested size: 371.30595pt x 179.55856pt.
- [21 <./img/bio_neuron.png> <./img/neuron.png>] [22]
-<./img/mreza.png, id=140, 429.85594pt x 112.16907pt>
+ [22 <./img/bio_neuron.png> <./img/neuron.png>] [23]
+<./img/mreza.png, id=150, 429.85594pt x 112.16907pt>
 File: ./img/mreza.png Graphic file (type png)
  <use ./img/mreza.png>
-Package pdftex.def Info: ./img/mreza.png used on input line 558.
+Package pdftex.def Info: ./img/mreza.png used on input line 592.
 (pdftex.def)             Requested size: 288.79422pt x 75.35997pt.
 
-[23 <./img/mreza.png>] [24]
+[24 <./img/mreza.png>] [25]
 Poglavlje 5.
-<./img/pravci_t7_1.png, id=147, 344.0052pt x 205.9695pt>
+<./img/pravci_t7_1.png, id=158, 344.0052pt x 205.9695pt>
 File: ./img/pravci_t7_1.png Graphic file (type png)
 
 <use ./img/pravci_t7_1.png>
-Package pdftex.def Info: ./img/pravci_t7_1.png used on input line 574.
+Package pdftex.def Info: ./img/pravci_t7_1.png used on input line 608.
 (pdftex.def)             Requested size: 195.96773pt x 117.33467pt.
 
-<./img/pravci_t7_2.png, id=148, 300.6432pt x 258.0039pt>
+<./img/pravci_t7_2.png, id=159, 300.6432pt x 258.0039pt>
 File: ./img/pravci_t7_2.png Graphic file (type png)
 
 <use ./img/pravci_t7_2.png>
-Package pdftex.def Info: ./img/pravci_t7_2.png used on input line 580.
+Package pdftex.def Info: ./img/pravci_t7_2.png used on input line 614.
 (pdftex.def)             Requested size: 195.96773pt x 168.17296pt.
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 572--584
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 606--618
 [][] [] 
  []
 
-<./img/pravci_t8_1.png, id=149, 322.3242pt x 263.0628pt>
+<./img/pravci_t8_1.png, id=160, 322.3242pt x 263.0628pt>
 File: ./img/pravci_t8_1.png Graphic file (type png)
 
 <use ./img/pravci_t8_1.png>
-Package pdftex.def Info: ./img/pravci_t8_1.png used on input line 593.
+Package pdftex.def Info: ./img/pravci_t8_1.png used on input line 627.
 (pdftex.def)             Requested size: 195.96773pt x 159.94223pt.
 
-<./img/pravci_t8_2.png, id=150, 283.2984pt x 256.5585pt>
+<./img/pravci_t8_2.png, id=161, 283.2984pt x 256.5585pt>
 File: ./img/pravci_t8_2.png Graphic file (type png)
 
 <use ./img/pravci_t8_2.png>
-Package pdftex.def Info: ./img/pravci_t8_2.png used on input line 599.
+Package pdftex.def Info: ./img/pravci_t8_2.png used on input line 633.
 (pdftex.def)             Requested size: 195.96773pt x 177.46793pt.
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 591--603
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 625--637
 [][] [] 
  []
 
-[25
+[26
 
  <./img/pravci_t7_1.png> <./img/pravci_t7_2.png>]
-<./img/pravci_rub_1.png, id=157, 242.8272pt x 188.6247pt>
+<./img/pravci_rub_1.png, id=167, 242.8272pt x 188.6247pt>
 File: ./img/pravci_rub_1.png Graphic file (type png)
 
 <use ./img/pravci_rub_1.png>
-Package pdftex.def Info: ./img/pravci_rub_1.png used on input line 612.
+Package pdftex.def Info: ./img/pravci_rub_1.png used on input line 646.
 (pdftex.def)             Requested size: 195.96773pt x 152.23254pt.
 
-<./img/pravci_rub_2.png, id=158, 324.4923pt x 256.5585pt>
+<./img/pravci_rub_2.png, id=168, 324.4923pt x 256.5585pt>
 File: ./img/pravci_rub_2.png Graphic file (type png)
 
 <use ./img/pravci_rub_2.png>
-Package pdftex.def Info: ./img/pravci_rub_2.png used on input line 618.
+Package pdftex.def Info: ./img/pravci_rub_2.png used on input line 652.
 (pdftex.def)             Requested size: 195.96773pt x 154.94238pt.
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 610--622
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 644--656
 [][] [] 
  []
 
-[26 <./img/pravci_t8_1.png> <./img/pravci_t8_2.png> <./img/pravci_rub_1.png> <.
-/img/pravci_rub_2.png>] <./img/trening1.png, id=166, 421.575pt x 316.18124pt>
+[27 <./img/pravci_t8_1.png> <./img/pravci_t8_2.png> <./img/pravci_rub_1.png> <.
+/img/pravci_rub_2.png>] <./img/trening1.png, id=176, 421.575pt x 316.18124pt>
 File: ./img/trening1.png Graphic file (type png)
 
 <use ./img/trening1.png>
-Package pdftex.def Info: ./img/trening1.png used on input line 636.
+Package pdftex.def Info: ./img/trening1.png used on input line 670.
 (pdftex.def)             Requested size: 195.96773pt x 146.97932pt.
- <./img/trening2.png, id=167, 421.575pt x 316.18124pt>
+ <./img/trening2.png, id=177, 421.575pt x 316.18124pt>
 File: ./img/trening2.png Graphic file (type png)
 
 <use ./img/trening2.png>
-Package pdftex.def Info: ./img/trening2.png used on input line 642.
+Package pdftex.def Info: ./img/trening2.png used on input line 676.
 (pdftex.def)             Requested size: 195.96773pt x 146.97932pt.
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 634--646
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 668--680
 [][] [] 
  []
 
-<./img/polukrug1.png, id=168, 421.575pt x 316.18124pt>
+<./img/polukrug1.png, id=178, 421.575pt x 316.18124pt>
 File: ./img/polukrug1.png Graphic file (type png)
 
 <use ./img/polukrug1.png>
-Package pdftex.def Info: ./img/polukrug1.png used on input line 655.
+Package pdftex.def Info: ./img/polukrug1.png used on input line 689.
 (pdftex.def)             Requested size: 195.96773pt x 146.97932pt.
 
-<./img/polukrug2.png, id=169, 421.575pt x 316.18124pt>
+<./img/polukrug2.png, id=179, 421.575pt x 316.18124pt>
 File: ./img/polukrug2.png Graphic file (type png)
 
 <use ./img/polukrug2.png>
-Package pdftex.def Info: ./img/polukrug2.png used on input line 661.
+Package pdftex.def Info: ./img/polukrug2.png used on input line 695.
 (pdftex.def)             Requested size: 195.96773pt x 146.97932pt.
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 653--665
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 687--699
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/kocka1.png, id=170, 421.575pt x 316.18124pt>
+<./img/kocka1.png, id=180, 421.575pt x 316.18124pt>
 File: ./img/kocka1.png Graphic file (type png)
  <use ./img/kocka1.png>
-Package pdftex.def Info: ./img/kocka1.png used on input line 672.
+Package pdftex.def Info: ./img/kocka1.png used on input line 706.
 (pdftex.def)             Requested size: 195.96773pt x 146.97932pt.
 
-<./img/kocka2.png, id=171, 421.575pt x 316.18124pt>
+<./img/kocka2.png, id=181, 421.575pt x 316.18124pt>
 File: ./img/kocka2.png Graphic file (type png)
  <use ./img/kocka2.png>
-Package pdftex.def Info: ./img/kocka2.png used on input line 678.
+Package pdftex.def Info: ./img/kocka2.png used on input line 712.
 (pdftex.def)             Requested size: 195.96773pt x 146.97932pt.
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 670--682
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 704--716
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[27 <./img/trening1.png (PNG copy)> <./img/trening2.png (PNG copy)>] [28 <./img
+[28 <./img/trening1.png (PNG copy)> <./img/trening2.png (PNG copy)>] [29 <./img
 /polukrug1.png (PNG copy)> <./img/polukrug2.png (PNG copy)> <./img/kocka1.png (
 PNG copy)> <./img/kocka2.png (PNG copy)>]
 Poglavlje 6.
-(./diplomski.bbl [29
+(./diplomski.bbl [30
 
 ]
 Underfull \hbox (badness 3098) in paragraph at lines 23--27
@@ -1180,38 +1223,41 @@ Underfull \hbox (badness 3769) in paragraph at lines 23--27
 vicrucann . github . io / tutorials /
  []
 
-) [30
+) [31
 
-] [31] [32] (./diplomski.aux) ) 
+] [32] [33] (./diplomski.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 7607 strings out of 494333
- 106941 string characters out of 6163939
- 187043 words of memory out of 5000000
- 10696 multiletter control sequences out of 15000+600000
+ 7622 strings out of 494333
+ 107270 string characters out of 6163939
+ 187050 words of memory out of 5000000
+ 10708 multiletter control sequences out of 15000+600000
  78727 words of font info for 119 fonts, out of 8000000 for 9000
  372 hyphenation exceptions out of 8191
- 43i,18n,43p,1502b,548s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/b
-ase/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/
-ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-urw/times/utmri8a.pfb>
-Output written on diplomski.pdf (38 pages, 3151931 bytes).
+ 43i,18n,43p,1502b,549s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on diplomski.pdf (40 pages, 3764602 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
+ 259 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 
