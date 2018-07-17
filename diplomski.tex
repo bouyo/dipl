@@ -1,18 +1,12 @@
 \documentclass[times, utf8, diplomski]{fer}
 \usepackage{booktabs}
 \usepackage[final]{pdfpages}
-\usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{bm}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \graphicspath{ {./img/} }
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-}
+
 
 \begin{document}
 
@@ -61,8 +55,9 @@ Infracrvena svjetlost je pogodna za detekciju na većim udaljenostima i uvjetima
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{infrared}
-\caption{Prikaz infracrvenog zračenja na spektru elektromagnetskih zračenja}
+\caption{Prikaz infracrvenog zračenja na spektru elektromagnetskih zračenja \protect\footnotemark}
 \end{figure}
+\footnotetext{https://www.youtube.com/watch?v=Csq8W9bzXDM}
 
 \subsection{Kamera}
 Testirane kamere su bile Pixy kamera sa IR-LOCK infracrvenom lećom (slika \ref{fig:pixy}) i kamera unutar Wiimotea (slika \ref{fig:wiimote}) koja ima infracrvenu leću već ugrađenu. Obje kamere vraćaju piksele slike na kojima je detektirano infracrveno zraćenje. Valna duljina infracrvenog zraćenja koje kamere najbolje detektiraju iznosi oko 940nm. Wiimote šalje piksele od 4 najintenzivije infracrvene točke dok ih Pixy kamera može detektirati mnogo više, što u ovom slučaju ne igra ulogu zbog samo 3 potrebne točke.
@@ -79,19 +74,21 @@ Wiimote je bolji izbor zbog rezolucije, lakšeg povezivanja i postavljanja te ni
 \begin{figure}[h]
 \begin{subfigure}[b]{.5\textwidth}
 \centering
-	\includegraphics[width=0.8\textwidth]{Nintendo-Wiimote}
-	\caption{Wiimote kontroler}
-	\label{fig:wiimote}
+\includegraphics[width=0.8\textwidth]{Nintendo-Wiimote}
+\caption{Wiimote kontroler \protect\footnotemark[1]}
+\label{fig:wiimote}
 \end{subfigure}
 \begin{subfigure}[b]{.4\textwidth}
-	\centering
-	\includegraphics[width=0.8\textwidth]{pixy}
-	\caption{Pixy kamera}
-	\label{fig:pixy}
+\centering
+\includegraphics[width=0.8\textwidth]{pixy}
+\caption{Pixy kamera \protect\footnotemark[2]}
+\label{fig:pixy}
 \end{subfigure}
 \caption{Testirane infracrvene kamere}
 \label{fig:cams}
 \end{figure}
+\footnotetext[1]{https://www.fr.fnac.be/Nintendo-Wiimote-blanche-pour-Nintendo-Wii-Manette-Wii/a1922653}
+\footnotetext[2]{http://www.robot-electronics.co.uk/cmucam5-pixy.html}
 
 \subsection{Infracrveni LED izvor}
 Potrebno je montirati izvor infracrvene svjetlosti uz kameru i usmjeriti ga u smjeru gledanja kamere kako bi se dobila čim bolja detekcija markera. Izvor mora biti dovoljnog intenziteta da infracrvena svjetlost bude detektirana kamerom nakon što prođe udaljenost između kamere i markera, reflektira se od markera i vrati opet do kamere. U najudaljenijoj točci radnog prostora drona ta će udaljenost biti oko 4m. Obične jeftine infracrvene diode male snage takvu udaljenost neće moći uspješno pokriti za detekciju. Dodatni problem s takvim infracrvenim diodama je relativno mali kut zračenja koji iznosi najčešće između 15$^{\circ}$ i 30$^{\circ}$. Da bi se pokrio cijeli radni prostor drona i vidno polje kamere potrebno bi bilo staviti više takvih dioda oko kamere.
@@ -101,9 +98,10 @@ Kako bi cijeli radni prostor bio dobro osvijetljen, koristiti će se infracrveni
 \begin{figure}[h]
 \centering
 \includegraphics[width=.4\textwidth]{infrared_led}
-\caption{Infracrveni SMD LED modul}
+\caption{Infracrveni SMD LED modul \protect\footnotemark}
 \label{fig:led}
 \end{figure}
+\footnotetext{\url{http://www.ledlightmake.com/high-power-led-modules-c-70_71/850nm-ir-led-3w-high-power-infrared-led-p-288.html}}
 
 \subsection{Marker}
 Markeri koji će se nalaziti na bespilotnoj letjelici moraju biti što lakši zbog iznimno male nosivosti letjelice. Drugi zahtjev je da reflektiraju što više svjetlosti natrag prema kameri neovisno o položaju letjelice i markera. Materijali koji dobro reflektiraju infracrvenu svjetlost su neki metali (Al, Ag i Au) te oksidi metala poput SiO$_2$ i Al$_2$O$_3$. Ukoliko bi se koristili premazi ili boje koje sadrže navedene spojeve i elemente, oni bi se trebali nanjeti na lagani materijal oblika kugle koji će reflektirati svjetlost natrag kameri. U ovom slučaju važno je da marker ima oblik kugle kako bi se dio reflektirane svjetlosti, neovisno o poziciji markera i kamere, uvijek vraćao istim putem natrag prema kameri. Stiroporne kuglice zadovoljavaju zahtjeve za marker koji će biti premazan.
@@ -111,25 +109,28 @@ Markeri koji će se nalaziti na bespilotnoj letjelici moraju biti što lakši zb
 \begin{figure}[h]
 \centering
 \includegraphics[width=.5\textwidth]{markers_dron}
-\caption{Okrugli OptiTrack markeri postavljeni na dronu}
+\caption{Okrugli OptiTrack markeri postavljeni na dronu \protect\footnotemark}
 \label{fig:opti_markers}
 \end{figure}
+\footnotetext{https://www.bitcraze.io/2018/06/mocap-deck/}
 
 Druga opcija je korištenje retroreflektirajućih materijala. Retroreflektirajući materijali reflektiraju svjetlost natrag izvoru svjetlosti uz minimalno rasipanje. Zraka svjetlosti koja dolazi prema retroreflektoru je paralelna i suprotnog smjera od reflektirane zrake (Slika \ref{fig:retrorefleksija}). Retroreflektori su najčešće male staklene ili plastične prizme. Koriste se u prometu u boji za linije na cesti i prometne znakove, kod reflektirajućih prsluka,  očiju za bicikl, itd. U slučaju odabira retroreflektora nije nužno koristiti marker oblika kugle zbog svojstva da vraća svjetlost prema izvoru neovisno o kutu upada.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.4\textwidth]{retroreflector}
-\caption{Odbijanje svjetlosti od retroreflektirajuće prizme}
+\caption{Odbijanje svjetlosti od retroreflektirajuće prizme \protect\footnotemark}
 \label{fig:retrorefleksija}
 \end{figure}
+\footnotetext{https://www.core77.com/posts/24028/A-Scintillating-Retroreflective-City-Cycle-by-Bike-Safe-Bostons-Joshua-Zisson}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{retroreflective_vest}
-\caption{Demonstracija osvjetljenja reflektirajućeg prsluka}
+\caption{Demonstracija osvjetljenja reflektirajućeg prsluka \protect\footnotemark}
 \label{fig:vesta}
 \end{figure}
+\footnotetext{https://www.flaggerforce.com/blog/alight-in-the-night-retroreflective-gear-for-night-work/}
 
 Zbog infracrvenog izvora premalog intenziteta nije moguće koristiti reflektirajuće markere pa će se sam izvor koristiti kao marker. Tri izvora pričvršćena su na bespilotnu letjelicu i spojena su u paraleli na dronovu bateriju. Ovim se zadovoljavaju uvjeti detekcije, ali se skraćuje trajanje baterije zbog dodatnog napajanja LED izvora. 
 
@@ -227,9 +228,11 @@ Oba Wiimotea se povezuju bežično preko Bluetooth veze sa osobnim računalom. R
 \begin{figure}[h]
 \centering
 \includegraphics[width=.45\textwidth]{ros_kinetic}
-\caption{ROS Kinetic Kame logo}
+\caption{ROS Kinetic Kame logo \protect\footnotemark}
 \label{fig:ros_kin}
 \end{figure}
+\footnotetext{http://www.ros.org/}
+
 Velika složenost zadataka koji se postavljaju pred moderne robote zahtijeva korištenje programske infrastrukture koja omogućuje efikasno povezivanje nezavisno razvijenih podsustava u jedinstveni sustav koji može omogućiti autonomno djelovanje robota. Robotski operacijski sustav (ROS) pruža okolinu za razvoj modularne upravljačke programske podrške, komunikacijsku infrastrukturu koja povezuje programske komponente, te otvorenu biblioteku implementiranih algoritama. U posljednjih 5 godina, ROS je postao de facto standard za upravljanje robotima unutar akademske zajednice, te se njegova primjena širi i na industriju.
 
 ROS nam u ovom projektu olakšava komunikaciju između nezavisnih Python skripti preko publish/subscribe sistema. Također nam omogućuje lako snimanje podataka koje objavljuje neka od skripti i ponovno objavljivanje tih podataka kasnije.
@@ -241,12 +244,13 @@ ROS teme su imenovani kanali kroz koje se odvija anonimna komunikacija između �
 \begin{figure}[h]
 \centering
 \includegraphics[width=.7\textwidth]{ros_struktura}
-\caption{Pojednostavljeni prikaz komunikacijske strukture ROS-a}
+\caption{Pojednostavljeni prikaz komunikacijske strukture ROS-a \protect\footnotemark}
 \label{fig:struktura}
 \end{figure}
+\footnotetext{https://www.generationrobots.com/blog/en/2016/03/ros-robot-operating-system-2/}
 
 \section{ROS - Implementacija}
-Sustav za globalnu viziju će se sastojati od tri čvora. Po čvor za primanje podataka sa svakog Wiimotea te čvor za obradu dobivenih mjerenja Wiimotea i objavu izračunate pozicije i orijentacije. Čvor za komunikaciju s Wiimoteom već postoji pa je skinut s interneta. Koristi se "wiimote" paket iz skupa paketa "joystick\textunderscore drivers" (\url{https://github.com/ros-drivers/joystick_drivers}). Ovaj paket se ne može koristiti za uspostavu komunikacije s više Wiimoteova. Ako se povežu oba Wiimotea pomoću njega, čvorovi će objavljivati mjerenja na istu temu i time brisati objave jedan drugom pa nije moguće dohvaćati mjerenja. Problem je riješen dodavanjem "id" parametra. Prilikom pokretanja čvora i povezivanja s Wiimoteom zadajemo identifikacijski broj koji mijenja naziv tema tako da dopiše parametar "id" na kraj postojećeg naziva teme. Novi čvor koji se koristi pokreće se Python skriptom wiimote\textunderscore node2.py i nalazi se u paketu "wiimote".
+Sustav za globalnu viziju će se sastojati od tri čvora. Po čvor za primanje podataka sa svakog Wiimotea te čvor za obradu dobivenih mjerenja Wiimotea i objavu izračunate pozicije i orijentacije. Čvor za komunikaciju s Wiimoteom već postoji pa je skinut s interneta. Koristi se "wiimote" paket iz skupa paketa "joystick\textunderscore drivers" \footnote{\url{https://github.com/ros-drivers/joystick_drivers}}. Ovaj paket se ne može koristiti za uspostavu komunikacije s više Wiimoteova. Ako se povežu oba Wiimotea pomoću njega, čvorovi će objavljivati mjerenja na istu temu i time brisati objave jedan drugom pa nije moguće dohvaćati mjerenja. Problem je riješen dodavanjem "id" parametra. Prilikom pokretanja čvora i povezivanja s Wiimoteom zadajemo identifikacijski broj koji mijenja naziv tema tako da dopiše parametar "id" na kraj postojećeg naziva teme. Novi čvor koji se koristi pokreće se Python skriptom wiimote\textunderscore node2.py i nalazi se u paketu "wiimote".
 
 Ovime se postiže da umjesto jedne teme naziva /wiimote/state dobijemo dvije teme: /wiimote/state1 i /wiimote/state2. Sada je lako dohvatiti mjerenja oba Wiimotea i možemo spojiti više Wiimoteova ako će biti potrebno.
 
@@ -260,9 +264,10 @@ Nakon što su kamere postavljene i usmjerene, markeri postavljeni na dronu i kom
 \begin{figure}[h]
 \centering
 \includegraphics[width=.6\textwidth]{wiimote2_rays}
-\caption{Projekcija markera na Wiimoteove}
+\caption{Projekcija markera na Wiimoteove \protect\footnotemark}
 \label{fig:zrake}
 \end{figure}
+\footnotetext{Izvor: \citep{Petric2010Realtime3M}}
 
 \section{Geometrijski postupak}
 U ovom postupku koristiti će se "pinhole" model kamere za opis matematičkog odnosa koordinata točke u tri dimenzije i njezine projekcije na slikovnu ravninu. Ovaj model opisuje kameru točkom i ne uzima u obzir utjecaje leće poput iskrivljenja slike i zamućenje objekata koji nisu u fokusu. Točnost pinhole modela opada udaljavanjem od središta slike prema rubovima zbog povećanja iskrivljenja slike.
@@ -406,9 +411,10 @@ Nakon što je završena transformacija vektora u globalni koordinatni sustav, po
 \begin{figure}[h]
 \centering
 \includegraphics[width=.5\textwidth]{skew-lines}
-\caption{Prikaz pravaca $l_1$ i $l_2$ te najbližih točaka $x_1$ i $x_2$}
+\caption{Prikaz pravaca $l_1$ i $l_2$ te najbližih točaka $x_1$ i $x_2$ \protect\footnotemark}
 \label{fig:skew-lines}
 \end{figure}
+\footnotetext{Izvor: \citep{geometryalgs}}
 
 Za izračun najbližih točki na pravcima, kreće se od parametarske jednadžbe pravca koja glasi:
 
@@ -468,7 +474,7 @@ t_1 = \frac{(\bm{p_2} - \bm{p_1})\cdot \bm{n_2}}{\bm{d_1}\cdot\bm{n_2}}
 
 \vspace{5mm}
 
-Ponavljanjem postupka za pravac $\bm{l_2}$ dobit će se $t_2$. Uvrštavanjem izračunatih $t_1$ i $t_2$ u jednadžbe pravaca $\bm{l_1}$ i $\bm{l_2}$ (jednadžba \ref{eq:pravci}) dobit će se najbliže točke na pravcima, $\bm{c_1}$ i $\bm{c_2}$.
+Ponavljanjem postupka za pravac $\bm{l_2}$ dobit će se $t_2$. Uvrštavanjem izračunatih $t_1$ i $t_2$ u jednadžbe pravaca $\bm{l_1}$ i $\bm{l_2}$ (jednadžba \ref{eq:pravci}) dobit će se najbliže točke na pravcima, $\bm{c_1}$ i $\bm{c_2}$. \citep{geometryalgs}
 
 \begin{equation}
 \bm{c_1} = \bm{p_1} + \frac{(\bm{p_2} - \bm{p_1})\cdot \bm{n_2}}{\bm{d_1}\cdot\bm{n_2}}\bm{d_1}
@@ -490,12 +496,12 @@ Drugi postupak koji se koristio za određivanje pozicije markera iz para piksela
 
 \subsection{Osnove neuronskih mreža}
 
-Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja bioloških neuronskih mreža. Biološki neuron, kao osnovna gradivna jedinica biološke neuronske mreže, prima i obrađuje informacije od drugih neurona i/ili od osjetilnih organa. Može se pojednostavljeno prikazati kao stanica sastavljena od tijela (soma), mnoštva dendrita i aksona (Slika \ref{fig:bio-neuron}). Mali razmak između završetka aksona prethodnoga neurona i dendrita sljedećeg neurona naziva se sinapsa. Akson jednoga neurona formira sinaptičke veze s mnoštvom drugih neurona. Impulsi, koji se generiraju u tijelu neurona, putuju kroz akson do sinapsi. Ovisno o učinkovitosti svakog pojedinačnog sinaptičkoga prijenosa, signali različitog intenziteta dolaze do dendrita. Učinkovitost sinaptičkoga prijenosa kroz neku sinapsu ovisi o njezinom elektrokemijskom stanju, koje je rezultat prethodnih sinaptičkih prijenosa kroz nju. Signali se od sinapsi dendritima proslijeđuju do tijela neurona, gdje se prikupljaju i obrađuju. Ovi signali mogu za tijelo neurona biti pobuđujući ili smirujući. Matematički gledano, pobuđujući i smirujući signali imaju suprotan predznak. Ako je njihova kumulativna vrijednost tijekom kratkog vremenskog intervala veća od praga osjetljivosti neurona, tijelo neurona generira impulse (tzv. aktivacijske potencijale) koji se šalju duž aksona prema drugim neuronima, a ako je manja, neuron ostaje nepobuđen i ne generira impulse.
+Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja bioloških neuronskih mreža. Biološki neuron, kao osnovna gradivna jedinica biološke neuronske mreže, prima i obrađuje informacije od drugih neurona i/ili od osjetilnih organa. Može se pojednostavljeno prikazati kao stanica sastavljena od tijela (soma), mnoštva dendrita i aksona (Slika \ref{fig:bio-neuron}). Mali razmak između završetka aksona prethodnoga neurona i dendrita sljedećeg neurona naziva se sinapsa. Akson jednoga neurona formira sinaptičke veze s mnoštvom drugih neurona. Impulsi, koji se generiraju u tijelu neurona, putuju kroz akson do sinapsi. Ovisno o učinkovitosti svakog pojedinačnog sinaptičkoga prijenosa, signali različitog intenziteta dolaze do dendrita. Učinkovitost sinaptičkoga prijenosa kroz neku sinapsu ovisi o njezinom elektrokemijskom stanju, koje je rezultat prethodnih sinaptičkih prijenosa kroz nju. Signali se od sinapsi dendritima proslijeđuju do tijela neurona, gdje se prikupljaju i obrađuju. Ovi signali mogu za tijelo neurona biti pobuđujući ili smirujući. Matematički gledano, pobuđujući i smirujući signali imaju suprotan predznak. Ako je njihova kumulativna vrijednost tijekom kratkog vremenskog intervala veća od praga osjetljivosti neurona, tijelo neurona generira impulse (tzv. aktivacijske potencijale) koji se šalju duž aksona prema drugim neuronima, a ako je manja, neuron ostaje nepobuđen i ne generira impulse. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{bio_neuron}
-\caption{Model biološkog neurona}
+\caption{Model biološkog neurona \protect\footnotemark[1]}
 \label{fig:bio-neuron}
 \end{figure}
 
@@ -504,9 +510,10 @@ Ideja umjetnih neuronskih mreža proizašla je iz načina funkcioniranja biološ
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{neuron}
-\caption{Model perceptrona}
+\caption{Model perceptrona \protect\footnotemark[1]}
 \label{fig:neuron}
 \end{figure}
+\footnotetext[1]{Izvor: \citep{ISU}}
 
 U radu će se koristiti statički model neurona. Njegov izlaz ovisi isključivo o trenutnim vrijednostima ulaznih signala i težinskim koeficijentima. Matematički se može opisati sljedećim izrazima:
 
@@ -537,7 +544,7 @@ $y(t)$ - izlaz neurona
 Većina neuronskih mreža zahtijeva učenje, to jest primjenu algoritama koji podešavaju iznose sinaptičkih težinskih koeficijenata. Ciljevi učenja mreže ovise o njezinoj primjeni, pa tako i izbor odgovarajućeg algoritma učenja. Iako je razvijen veliki broj raznih
 algoritama učenja neuronskih mreža, moguće ih je po načinu učenja mreže podijeliti na algoritme učenja temeljene na pogrešci, algoritme učenja temeljene na izlazu mreže i algoritme učenja s ojačanjem. U radu će biti korišteni algoritmi učenja temeljeni na pogrešci.
 
-\textit{Algoritmi učenja temeljeni na pogrešci} često se nazivaju i algoritmi s “učiteljem” jer zahtijevaju vanjski referentni signal (učitelj) s kojim uspoređuju dobiveni odziv neuronske mreže generirajući signal pogreške. Na temelju signala pogreške algoritam učenja mijenja sinaptičke težinske koeficijente neuronske mreže s ciljem poboljšanja njezina vladanja, to jest smanjenja pogreške. Ovi se algoritmi mogu primijeniti samo ako je unaprijed poznato željeno vladanje neuronske mreže, to jest podaci na osnovi kojih se mreža uči moraju sadržavati parove vrijednosti ulazno-izlaznih signala.
+\textit{Algoritmi učenja temeljeni na pogrešci} često se nazivaju i algoritmi s “učiteljem” jer zahtijevaju vanjski referentni signal (učitelj) s kojim uspoređuju dobiveni odziv neuronske mreže generirajući signal pogreške. Na temelju signala pogreške algoritam učenja mijenja sinaptičke težinske koeficijente neuronske mreže s ciljem poboljšanja njezina vladanja, to jest smanjenja pogreške. Ovi se algoritmi mogu primijeniti samo ako je unaprijed poznato željeno vladanje neuronske mreže, to jest podaci na osnovi kojih se mreža uči moraju sadržavati parove vrijednosti ulazno-izlaznih signala.\citep{ISU}
 
 \subsection{Implementacija neuronske mreže}
 Neuronska mreža koja će se koristiti za izračun pozicije ima četiri ulaza i tri izlaza. Ulazi su koordinate piksela prve kamere ($x_1$, $y_1$) i koordinate piksela druge kamere ($x_2$, $y_2$). Izlaz iz neuronske mreže su globalne koordinate markera ($X_G$, $Y_G$, $Z_G$). Iz jednadžbi izvedenih u geometrijskoj metodi izračuna pozicije točke može se uočiti da su jedini nelinearni članovi jednadžbi sinusi i kosinusi. Unaprijedna (\textit{engl.} feedforward) jednoslojna mreža će biti dovoljno precizna za opis funkcije preslikavanja. Broj neurona u skrivenom sloju bi trebao biti veći od pet jer se s pet neurona skrivenog sloja postiže relativno dobro praćenje sinusne funkcije.
@@ -683,8 +690,9 @@ Ova metoda dala je znatno bolje rezultate od geometrijske metode zbog toga što 
 \chapter{Zaključak}
 Zaključak.
 
-\bibliography{literatura}
 \bibliographystyle{fer}
+\bibliography{literatura}
+
 
 \begin{sazetak}
 U mnogim granama industrije veliki značaj ima praćenje kretanja. Prisutna rješenja poput OptiTrack-a osiguravaju precizno praćenje, ali su iznimno skupa. Cilj rada je razvoj jednostavnog i ekonomski prihvatljivog sustava globalne vizije za praćenje pozicije i orijentacije bespilotnih letjelica. Sustav se sastoji od dvije infracrvene kamere i tri infracrvena markera postavljena na dronu. Za određivanje pozicije markera u globalnom koordinatnom sustavu potrebne su minimalno dvije kamere. Minimalno tri markera potrebna su kako bi se mogla izračunati orijentacija drona uz njegovu poziciju. Kao kamera se koristi Wiimote koji sadrži jednostavnu infracrvenu kameru, a markeri su infracrveni LED izvori velike snage (3W). Komunikacija između Wiimoteova i osobnog računala ostvarena je pomoću Bluetootha i ROS čvora. Iz poznatih pozicija kamera i dobivenih točaka od svakog Wiimotea, osobno računalo računa globalnu poziciju svake točke te iz tih pozicija računa orijentaciju i poziciju drona. Orijentacija i pozicija se objavljuju preko ROS-a kako bi se mogli dohvatiti od strane upravljačkog algoritma. 
